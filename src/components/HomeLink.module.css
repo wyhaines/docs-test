@@ -1,0 +1,13 @@
+.link {
+  display: block;
+  width: 300px;
+  height: 260px;
+  margin: 8px;
+  text-align: center;
+  padding-top: 20px;
+  border: 1px solid #f4f4f4;
+}
+
+.link:hover {
+  text-decoration: none;
+}
