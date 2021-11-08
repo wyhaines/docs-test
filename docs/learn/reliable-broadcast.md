@@ -29,12 +29,12 @@ A correct Topos XCP node, once it has joined the Topos XCP network, has successf
 - A _Ready_ sample and its associated threshold $R$
 - A _Delivery_ sample and its associated threshold $D$
 
-Starting from this basis, a correct Topos XCP node starts exchanging sample-specific subcription messages with its _Gossip_, _Echo_, and _Ready_ sampled peers.
+Starting from this basis, a correct Topos XCP node starts exchanging sample-specific subcription messages with its _Echo_ and _Ready_ sampled peers.
 
 Upon receiving such messages from other nodes, a correct Topos XCP node adds them in its samples in a sample-specific manner:
 
-- Originators of _Gossip_ subscription messages are added to the Gossip sample
-- Originators of _Echo_ and _Ready_ subscription messages are added to new _Echo\*_ and _Ready\*_ samples
+- Originators of _Echo_ subscription messages are added to a new _Echo\*_ sample
+- Originators of _Ready_ subscription messages are added to a new _Ready\*_ sample
 
 A correct Topos XCP node interacts with its samples as follows:
 
