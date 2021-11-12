@@ -58,6 +58,12 @@ As mentioned above, in a Schnorr signature scheme, the signer initially generate
 
 ### ICE-FROST in XCP
 
+ICE-FROST is used in XCP for signing certificates by the sidechain validators. The main purpose of signing is authenticating the sidechain creating the certificate and and verifying the integrity of the certificate i.e., the certificate was not altered in transit. It is assumed that sidechains are running a BFT consensus mechanism, so the XCP requires that at least two-third (the threshold) of the validators sign the certificate. This ensures that, unless an adversary controls a supermajority of the validators, it is not possible for a sidechain to commit a state which is unknown to honest validators in the certificate.
+
+When a sidechain registration takes place, the initial set of validators runs the initial DKG phase, as a result of which they obtain a static ICE-FROST public key that is required to verify certificate signatures. This public key is included in the registration and stays static for the lifetime of the given sidechain. The set of validators is updated every *epoch* (e.g., every six hours), this is when updating of shares phase takes place. Since the public key is designed to be static, the redistribution of shares does not change the group signing and verification keys. Note that both the initial and redistribution phases are *dealerless*.
+
+The certificates is signed and then it is propagated with signature by the sidechain's XCP node. When it reaches the mainchain and/or other XCP nodes verify the signature. The signature is indistinguishable from a Schnorr signature. Checking the certificate signature first effectively prevents spamming, in the case an adversary sends multiple certificates with invalid signatures, since it is an almost free operation.
+
 ### Benefits of ICE-FROST over FROST
 
 The main benefits of ICE-FROST over its predecessor FROST are:
