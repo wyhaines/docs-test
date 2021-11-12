@@ -18,3 +18,28 @@ The "S" in "zk-STARK" stands for scalable: i.e. the computations do not become p
 The "T" stands for transparent: meaning that, unlike most of the previous proof systems, no trusted third party is required.  Transparency adds an extra layer of privacy and security.  Another added layer of  security provided is  use of hash functions in computations involved in zk-STARKs. These  hash functions are  currently known to be quantum resistant -- that is, invulnerable to attack by quantum computers.
 
 ## How does STARK works in XCP?
+
+On a sidechain SC, all the outgoing cross-chain transactions are encased into certificates, with a fixed number of transactions per certificate.
+These certificates provide the following necessary proofs in form of STARK proofs:
+-that the sender has enough tokens to do this transfer
+-that the transaction was approved by the sender.
+-that the receiving account is correctly identified.
+-that the state transition was done correctly, namely, that the account balances are updated correctly following the transactions listed in the certificate.
+​
+
+### To be precise, a STARK proof checks:
+
+​
+-that the sender has enough tokens to do the transactions using range proofs.
+-that the Merkle tree which represents the current state of the sidechain is updated at the appropriate leaf representing the sender, namely, the account balance of the sender is deducted by the amount of transaction and the nonce is updated for the number of transactions done by this sender. The leaves of this tree are rescue-hash of the concatenation of public key of the process holding the account, account balance and the nonce which represents the number of outgoing transactions done by the account holder.
+-that the Schnorr signature checks out for the sender.
+-that the public key of the receiver is properly identified.
+​
+At the moment, each certificate has at most 14 STARK proofs.
+The STARK proofs are non-interactive, the prover being the certificate producing entity(the set of validators); and the verifiers are the listening XCP nodes. However, any entity can verify this certificate. The public inputs are the Merkle roots of the previous and current certificate.
+​
+​
+
+## Future direction
+
+WIP
