@@ -30,4 +30,4 @@ Overall, Topos XCP blockchains construct Certificates with the following data:
 - The list of outgoing XC transactions (exposed state)
 - A signature of the Certificate
 
-Certificates are signed by a [threshold signature](/learn/threshold-signature) scheme that is detailed in the next section.
+Certificates are signed by a [threshold signature](/learn/uci/authentication) scheme that is detailed in the next section.
