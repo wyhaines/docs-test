@@ -14,7 +14,7 @@ A state transition in a blockchain is a set of transactions, i.e. state mutation
 
 For Topos XCP to retain a consistent global state—i.e. blockchains can interact with one another and inconsistent state is prevented— participating blockchains construct proofs of the validity of their state transitions. Topos XCP is **privacy-enhancing** hence does not request blockchains to publicly share their blocks. Instead, another form of state commitments is used by all subnets: **Certificates**.
 
-To prove the validity of their state transitions while exposing only a part of their internal state (more on that later), Topos XCP blockchains nodes compute [zkSTARK](/learn/zkSTARK) proofs attesting the validity of every transaction that happened since the previous Certificate.
+To prove the validity of their state transitions while exposing only a part of their internal state (more on that later), Topos XCP blockchains nodes compute [zkSTARK](/learn/uci/state-transitions-validity) proofs attesting the validity of every transaction that happened since the previous Certificate.
 
 Other blockchains verify such state transitions by verifying Certificates which among other things equates to verifying the zkSTARK proof.
 
