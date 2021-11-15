@@ -4,70 +4,47 @@ sidebar_position: 2
 
 # State Transitions Validity
 
-Topos is an ecosystem of interoperable blockchains, each of them called a subnet. The _state_ of a blockchain represents information, which includes account balances and public identities. Transactions between the accounts, within a subnet or across multiple subnets, change the state of the subnet(s); that is, lead to a state transition. In the case of Topos cross-subnet transactions, these transactions are aggregated in a certificate by a sending subnet (Initial) and then processed by the receiving subnets (Terminals). The internal state of subnets is private, but the cross-subnet transactions are public. For the integrity of the Topos ecosystem, it is important that the state transition computation at each subnet is done correctly (the state transition is _valid_), and is verifiable efficiently.
+## Computational Integrity
 
-In a trustless setup, where the verifier does not trust the certificate producer, verifying each individual transaction and its corresponding state transition would be computationally prohibitive for a large number of transactions, thus impeding scalability. This bottleneck can be removed if the verifier checks the integrity of the computation provided by the prover without checking each transaction. In addition, the zero-knowledge property of the produced certificate proofs allows an Initial to prove the validity of its current state without compromising private internal information, such as account addresses or account balances. Topos achieves both scalability and privacy by adapting and designing a zk-STARK as discussed in more details below.
+## AIR Program
 
-## zk-STARK
+# zk-STARKs
 
-zk-STARK is one of the cryptographic technologies that achieves both scalability and privacy, two of the most important properties for blockchains. It relies on Computational integrity (CI) proofs for scalability and zero knowledge for privacy.
+## Zero-knowledge Proofs
 
-### Computational Integrity
+[Zero-knowledge proofs](https://dl.acm.org/doi/10.1145/62212.62222) allow one party (called the _prover_) to prove to other parties (called the _verifiers_) the validity of a certain statement without revealing any extra information about the statement itself. For example, assume that party _A_ would like to prove to party _B_ that it has enough tokens to complete a transaction, without actually showing how many tokens it has. Such technology has received major attention in the field of [blockchains](https://docs.ethhub.io/ethereum-roadmap/privacy/) for enhancing privacy, as this is a fundamental property of all multi-chain networks open to both public and private ledgers.
+Topos (Cross Subnet Protocol) XSP leverages zero-knowledge proofs when each ledger proves the validity of its state transitions to the rest of the ecosystem. More specifically, Topos XSP leverages [zk-STARK proof](https://eprint.iacr.org/2018/046.pdf) to achieve interoperability between its ledgers of the ecosystem, and more generally, to the other blockchains.
 
-Computational integrity (CI) means that the computations were done correctly. A proof of computational integrity is used to convince the verifier that the state transitions of a subnet were computed correctly (with a very high probability) without the verifier having to perform these transitions themselves. This is extremely efficient if the number of state transitions is large, and the CI proof is both computable and verifiable efficiently, leading to high capacity.
+## zk-STARKs
 
-### Zero-knowledge Proofs
+The term "zk-STARK" stands for "zero-knowledge Scalable Transparent ARgument of Knowledge". These arguments can be non-interactive or interactive depending on whether the verifying party needs to interact with the prover. zk-STARKs are specifically used to prove computation integrity, meaning that the verifying party can attest to the validity of the computation (i.e. the correctness of its output), maintaining the opaqueness of the input, and thus providing a zero knowledge privacy. These computations are specified by formal algebraic statements, called algebraic intermediate representation (AIR).
+The "S" in "zk-STARK" stands for scalable: the computations do not become prohibitively slow and costly as the length of the blockchain increases. For example, the computations and storage can be performed off-chain, and then prover generates STARK proofs for computational integrity, and after that places it on chain for verification by verifier. The time required by verifier is significantly small, which facilitates further the interoperability of the ledgers. This efficiency, along with parallelizability, enables a large number of computations to occur.
 
-Zero-knowledge proofs allow one party (called the _prover_) to prove to other parties (called the _verifiers_) the validity of a certain statement, without revealing any extra information about the statement itself. For example, assume that party A would like to prove to party B that it has enough funds to complete a transaction, without actually showing how much funds it has. Such technology has received major attention in the field of blockchains for enhancing privacy.
+The "T" stands for transparent: meaning that, unlike most of the previous proof systems, no trusted third party is required for setup. Transparency adds an extra layer of privacy and security. Another added layer of security provided is the use of hash functions in computations involved in zk-STARKs. These hash functions-based constructions are currently known to be quantum-resistant. That is, invulnerable to attack by quantum computers, which paves a way to obtaining quantum-safe blockchains.
 
-### General zk-STARK Description
+## STARKs in XSP
 
-The term _zk-STARK_ stands for "zero-knowledge Scalable Transparent ARgument of Knowledge". These arguments can be interactive or non-interactive, depending on whether the verifying party needs to interact with the prover during the generation of a proof. STARKs are specifically used to prove computational integrity, meaning that the verifying party can attest to the validity of the computation (i.e. the correctness of its output). With the zero-knowledge, it helps to maintain the opaqueness of the input, and thus providing privacy.
+On a sidechain, all the outgoing cross-chain transactions are batched into certificates, with a fixed number of transactions per certificate.
+These certificates provide the following necessary checks in form of STARK proofs that:
 
-The "S" in _zk-STARK_ stands for _scalable_: the computations do not become prohibitively slow and costly as the number of statements to be proven increases. This can be achieved, if the computations and storage can be performed off-chain, and then the prover generates STARK proofs for computational integrity, and then puts it on chain for verification by the verifier. The time required for verification by the verifier is significantly small, which facilitates further the interoperability of the subnets. The prover runs in quasi-linear time (a statement twice as large will take almost twice as much time to prove) and the verifier runs in logarithmic time and in practice is extremely fast. This efficiency, along with parallelizability of prover computations, enables a large number of computations to occur.
+- the sender has enough tokens to do this transfer;
+- the transaction was approved by the sender;
+- the receiving account is correctly identified; and
+- the state transition was done correctly (i.e. that the account balances are accurately updated following the transactions listed in the certificate).
 
-The "T" stands for _transparent_: unlike most of the previous proof systems, no trusted third party is required for the setup. Transparency adds an extra layer of security, and decentralization. The cryptographic primitive used in zk-STARK proof is collision resistant hash functions. These hash functions are currently known to be quantum-resistant; that is, invulnerable to attacks by quantum computers, which paves a way to obtaining quantum-safe blockchains.
+### What is Verified by STARK Proof?
 
-The "ARK" stands for _ARgument of Knowledge_: the piece of information given by a (computationally bounded) prover to a verifier allows the latter to verify the validity of the statement efficiently.
+A STARK proof checks the following:
 
-In practice, CI proofs using STARK are first converted to sequences of machine states called execution traces. Any two consecutive states in the execution trace are related by a set of polynomials called constraints. This algebraic representation of CI proofs is called _algebraic intermediate representation_ (AIR). The columns of the execution trace are interpolated and then combined to form a polynomial of low degree called the composition polynomial. The prover then commits to this composition polynomial in a Merkle tree. The CI proof verification by verifier then turns into an [Interactive Oracle Proofs of Proximity](https://eccc.weizmann.ac.il/report/2017/134/download/). This reduction of problem has the advantage that prover's proof length and the computation is quasi-linear in the size of input whereas verifier's time is logarithmic in the size of input. This proof can be made non-interactive in the Random Oracle Model.
+- the sender has enough tokens to do the transactions using range proofs;
+- the Merkle tree, which represents the current state of the sidechain is updated at the appropriate leaf, representing the sender, where the account balance of the sender is deducted by the amount of transaction and the nonce is updated for the number of transactions completed by this sender. The leaves of this tree are formed by the Rescue-hash of the concatenation of public key of the process holding the account, account balance and the _nonce_, which represents the number of outgoing transactions done by the account holder;
+- the Schnorr signature checks out for the sender; and
+- the public key of the receiver is properly identified.
 
-## STARKs in Topos XSP
+At the moment, each certificate has at most 14 STARK proofs.
+The STARK proofs are non-interactive. The _prover_ is the certificate producing entity (the set of validators), and the _verifier_ is any listening XSP node. However, note that any entity can verify this certificate, since the public inputs are the Merkle roots of the previous and current certificates.
 
-Topos XSP uses zk-STARK where each subnet proves the validity of its state transition to the rest of the ecosystem, without revealing its internal state. More specifically, Topos XSP leverages zk-STARK proofs to achieve interoperability between its heterogeneous subnets, and more generally, to the other blockchains.The outline of how STARK is used in the Topos ecosystem is discussed below. 
+## Future direction
 
-On the Initial, all the outgoing cross-subnet transactions are batched into certificates, with a fixed number of transactions per certificate. These certificates provide the following necessary checks in a form of STARK proofs that, for each transaction (recall the current Topos STARK proofs operate on the account-based model):
-
-- The amount to be sent is positive.
-
-- The amount to be sent is smaller than the sender's balance.
-
-- The transaction is signed by the sender.
-
-- The receiving account is correctly identified.
-
-- The state transition is done correctly (i.e., the account balances are accurately updated following the state update, along with the sender's nonce being incremented by one).
-
-On a Terminal of the certificate, STARK proof checks that the receiving account(s) are accurately updated. 
-
-For an internal transaction, STARK proofs additionally check that the receiver's account is accurately updated on the subnet.
-
-### Statements Verified by the Topos STARK Proof
-
-A Topos XSP STARK proof checks the following:
-
-- The sender has enough funds to do the transaction using range proofs.
-
-- The Merkle tree, which represents the current state of the Initial is updated at the appropriate leaf, representing the sender's account balance, where the account balance of the sender is deducted by the amount of transaction and the nonce is updated for the number of transactions completed by this sender. The leaves of this tree are formed by the Rescue hash of the concatenation of the public key of the account, the account balance and the nonce, which represents the number of outgoing transactions done by the account holder.
-
-- The Schnorr signature of the sender is valid.
-
-- The public key of the receiver is properly identified.
-
-At the moment, each certificate has at most 14 STARK proofs. The prover is the certificate producing entity, and the verifiers are the TCE nodes and the Terminals. However, note that any entity can verify this certificate, since the public inputs are the Merkle roots of the previous and current certificates.
-
-For an internal transaction or at the Terminal of the certificate, the STARK proof additionally checks that the Merkle leaf of receiver(s), and consequently, the Merkle tree of the subnet is correctly updated. 
-
-## Future Work and Next Steps
-
-Current STARK proofs require custom-made AIRs. This customization restricts the kinds of proofs that can be proven by the given STARK. The next step would be to remove this bottleneck by constructing a virtual machine, such that execution of proof of arbitrary statements on this machine can be verified using a single STARK proof.
+The current STARK proofs require custom made AIR, one for each of different kind of statements. This restricts the kinds of proofs that can be proven by the given STARK.
+The next step would be to remove this bottleneck by constructing a [virtual machine](https://github.com/GuildOfWeavers/distaff) such that execution of proof of arbitrary statements on this machine can be verified with a single STARK proof.
