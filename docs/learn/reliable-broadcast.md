@@ -2,6 +2,6 @@
 sidebar_position: 5
 ---
 
-# Reliable Broadcast
+# Reliable Broadcast (TO BE REMOVED)
 
 ## Causal Ordering

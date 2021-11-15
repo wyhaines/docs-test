@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# zkSTARK
+# zkSTARK (DEPRECATED)
 
 ## Zero-knowledge Proofs
 
