@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Threshold Signatures
+# Threshold Signatures (DEPRECATED)
 
 ## Digital Signature
 
