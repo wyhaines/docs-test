@@ -10,7 +10,7 @@ To prevent spamming, false identity and data tampering, Topos XSP leverages _dig
 
 A basic digital signature allows an _individual_ entity to sign a message. However, in blockchain environments we tend to distribute trust among the group of validators rather than a single entity. That's why multi-signatures and threshold signatures are used by different blockchain projects. While multi signatures give the signing authority to a predefined group of entities, in threshold signatures _any_ group of signers of sufficiently large cardinality are able to sign valid messages.
 
-Authentication is achieved in Toposware ecosystem via a [Threshold Signature Scheme](https://link.springer.com/chapter/10.1007/3-540-68339-9_31).
+Authentication is achieved in Toposware ecosystem via a [Threshold Signature Scheme](https://link.springer.com/chapter/10.1007/3-540-45539-6_15).
 
 
 
@@ -24,9 +24,9 @@ A _t out of n_ threshold signature scheme is a multi-party digital signature pro
 
 :::
 
-In addition to augmenting FROST with robustness in the distributed key generation phase, ICE-FROST protocol enjoys two properties that are tailored for our XSP design, namely:
+The customizations augment FROST with robustness in the distributed key generation phase. The robustness of ICE-FROST is achieved via exact **identification of a cheating entity** during the key generation. The protocol also has two additional important properties that are tailored for our XSP design, namely:
 
-i) exact **identification of a cheating entity** during the key generation and signing protocols, that can conclude in preventing cheating if suitable punishments are predicted for cheaters, and
+i) exact **identification of a cheating entity** during the signing protocols, that can conclude in preventing cheating if suitable punishments are predicted for cheaters, and
 
 ii) allows a blockchain network to distribute a **static long-running verification key** with respect to which signatures can be produced by different sets of signers.
 
@@ -61,7 +61,7 @@ Schnorr signatures are constructed based on the Sigma protocol structure. Sigma 
 
 ICE-FROST distributed key generation protocol is based on the [DKG algorithm of Pedersen](https://link.springer.com/chapter/10.1007/3-540-46416-6_47), which is a distributed secret sharing scheme, combined with [Shamir's Secret Sharing](https://dl.acm.org/doi/abs/10.1145/359168.359176). All participants of the DKG algorithm _securely_ distribute their random chosen secrets among other participants. Since no participant is trusted prior to execution of the protocol, a _verifiable_ secret sharing scheme is used that allows participants to verify if the received share is consistent with others. Verifiability is achieved by enforcing each participant to commit to its chosen secret (and the corresponding polynomial that is used for secret sharing) and broadcast the commitment values at the beginning of the protocol. After successful sharing of secrets, participants interpolate their received shares to compute their private signing share. The group's public verification key is calculated using the public broadcasted commitments.
 
-To enable cheating identifiability in ICE FROST, each participant chooses a pair of ephemeral public and private keys for each secret dealing and publishes the public key and a proof of knowledge of the corresponding private key. In order to securely send shares to each participant a [Diffie-Hellman(DH) key agreement](https://ee.stanford.edu/%7Ehellman/publications/24.pdf) is used to established shared secret key between the sender and receiver of the given share. This key is used to securely encrypt the share and send it out to the corresponding receiver. If a participant cheats by sending out an inconsistent share, the receiver will catch it using the initial published commitment. However, since shares are transmitted in the encrypted form, the receiver of the malformed share has to reveal the mutual DH key to convince other participants that it has received a malformed share. If the receiver lies and accuses an honest participant of sending a malformed share it will be caught itself after other participants check its complaint using the revealed DH key.
+To enable cheating identifiability in ICE FROST, each participant chooses a pair of ephemeral public and private keys for each secret dealing and publishes the public key and a proof of knowledge of the corresponding private key. In order to securely send shares to each participant a [Diffie-Hellman(DH) key agreement](https://ee.stanford.edu/%7Ehellman/publications/24.pdf) is used to established shared secret key between the sender and receiver of the given share. This key is used to securely encrypt the share and send it out to the corresponding receiver. If a participant cheats by sending out an inconsistent share, the receiver will catch it using the initial published commitment. However, since shares are transmitted in the encrypted form, the receiver of the malformed share has to reveal the mutually established DH key, as well as a proof of its correctness, to convince other participants that it has received a malformed share. If the receiver lies and accuses an honest participant of sending a malformed share it will be caught itself after other participants check its complaint using the revealed DH key.
 
 #### Updating Shares
 
