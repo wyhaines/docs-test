@@ -2,10 +2,10 @@
 sidebar_position: 2
 ---
 
-# Ledger
+# Subnet
 
-## Types of ledgers
+## Types of subnets
 
 ## Lifecycle
 
-## Cross-Ledger Transactions
+## Cross-Subnet Transactions

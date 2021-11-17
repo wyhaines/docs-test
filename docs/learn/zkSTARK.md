@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Zero-knowledge Proofs
 
-Zero-knowledge protocols are such that allow one party to prove the validity of a given statement without revealing any information from it to another—verifying—party. Such technology has received major attraction in the field of blockchain for it is privacy enhancing, a property that is central to multi-chain networks open to both public and private ledgers.
+Zero-knowledge protocols are such that allow one party to prove the validity of a given statement without revealing any information from it to another—verifying—party. Such technology has received major attraction in the field of blockchain for it is privacy enhancing, a property that is central to multi-chain networks open to both public and private subnets.
 
 Topos XCP leverages zero-knowledge proofs in how a blockchain proves the validity of its state transitions to the rest of the ecosystem. More specifically, Topos XCP leverages zkSTARKs.
 

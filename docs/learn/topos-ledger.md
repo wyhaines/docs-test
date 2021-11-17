@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# TOPOS Ledger
+# TOPOS Subnet
 
 ## Staking
 
