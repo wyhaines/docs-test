@@ -28,7 +28,7 @@ both public and private ledgers. Topos (Cross Subnet Protocol) XSP leverages zer
 
 ### zk-STARK Description
 
-The term *zk-STARK stands for "zero-knowledge Scalable Transparent ARgument of Knowledge". These arguments can be interactive or non-interactive, depending on whether the verifying party needs to interact with the prover. zk-STARKs are specifically used to prove computational integrity, meaning that the verifying party can attest to the validity of the computation (i.e. the correctness of its output), maintaining the opaqueness of the input, and thus providing a zero-knowledge privacy.
+The term *zk-STARK* stands for "zero-knowledge Scalable Transparent ARgument of Knowledge". These arguments can be interactive or non-interactive, depending on whether the verifying party needs to interact with the prover. zk-STARKs are specifically used to prove computational integrity, meaning that the verifying party can attest to the validity of the computation (i.e. the correctness of its output), maintaining the opaqueness of the input, and thus providing a zero-knowledge privacy.
 
 The "S" in *zk-STARK* stands for *scalable*: the computations do not become prohibitively slow and costly as the length of the blockchain increases. For example, the computations and storage can be performed off-chain, and then the prover generates STARK proofs for computational integrity, and after that places it on chain for verification by verifier. The time required for verification by the verifier is significantly small, which facilitates further the interoperability of the ledgers. This efficiency, along with parallelizability, enables a large number of computations to occur.
 
