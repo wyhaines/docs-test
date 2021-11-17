@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started
 
-Topos XSP is an open protocol of **interoperable** [subnets](/learn/ledger) that makes no compromises on their **privacy**. Typical trust assumptions are replaced by a zero-knowledge proof construction that allows for frictionless cross-subnet communication.
+Topos XSP is an open protocol of **interoperable** [subnets](/learn/subnets) that makes no compromises on their **privacy**. Typical trust assumptions are replaced by a zero-knowledge proof construction that allows for frictionless cross-subnet communication.
 
 Topos XSP remains agnostic as to the internal structure of a subnet and global consistency over messages exchanged between heterogeneous **private** and **public** subnets is not ensured by consensus but by an open [probabilistic secure reliable broadcast](/learn/tce/psrb) primitive. This is in clear contrast with other multi-chain projects which commonly rely on a central consensus layer to enforce a consistent state.
 
