@@ -13,13 +13,17 @@ Topos XSP has been designed from the ground up around the core concept that part
 Topos XSP subnets can come in various forms:
 
 - Blockchains developed with [Topos Subnet DevKit](#)
-- Blockchains developed with other frameworks (_available in a future iteration_)
-- Networks which are not blockchains (_available in a future iteration_)
+- Blockchains developed with other frameworks (_available in future iterations_)
+- Networks which are not blockchains (_available in future iterations_)
+
+The UCI is the center piece that allows projects not built with Topos Subnet DevKit to be compatible with the Topos XSP ecosystem: using future UCI client implementations, projects of any form will be able to produce data ready to be certified and accepted by all other subnets.
 
 :::info
+Read more about the [UCI](#).
+:::
 
+:::tip
 While Topos Subnet DevKit is our top priority for now, development of language-specific UCI client implementations by the community is welcome!
-
 :::
 
 ## Lifecycle
