@@ -6,7 +6,7 @@ sidebar_position: 2
 
 Topos is an ecosystem of interoperable blockchains, each of them called a subnet. The _state_ of a blockchain represents information, which includes account balances and public identities. Transactions between the accounts change the state of the blockchain; that is, lead to a state transition. In the case of Topos cross-subnet transactions, these transactions are aggregated in a certificate by a sending subnet (Initial) and then processed by the receiving subnet (Terminal). The internal state of subnets are private, but the cross-subnet transactions are public. For the integrity of the Topos ecosystem, it is important that the state transition computation at each subnet is done correctly (the state transition is _valid_), and is verifiable efficiently.
 
-In general, in a trust-less setup, where the verifier does not trust the certificate producer, verifying each individual transaction and its corresponding state transition would be computationally prohibitive for a large number of transactions, thus impeding scalability. This bottleneck can be removed if the verifier checks the integrity of the computation provided by the prover without checking each transaction. In addition, the zero-knowledge property of the produced certificate proofs allows an Initial to prove the validity of its current state without compromising private internal information, such as account addresses or account balances. Topos achieves both scalability and privacy by designing a zk-STARK as discussed in more details below.
+In general, in a trust-less setup, where the verifier does not trust the certificate producer, verifying each individual transaction and its corresponding state transition would be computationally prohibitive for a large number of transactions, thus impeding scalability. This bottleneck can be removed if the verifier checks the integrity of the computation provided by the prover without checking each transaction. In addition, the zero-knowledge property of the produced certificate proofs allows an Initial to prove the validity of its current state without compromising private internal information, such as account addresses or account balances. Topos achieves both scalability and privacy by adapting and designing a zk-STARK as discussed in more details below.
 
 ## zk-STARK
 
@@ -49,6 +49,8 @@ The outline of how STARK is used in Topos ecosystem is discussed below. On a sub
 - The state transition is done correctly (i.e., the account balances are accurately updated following the state update, along with the sender's nonce being incremented by one).
 
 ### Statements Verified by the Topos STARK Proof
+
+A Topos XSP STARK proof checks the following:
 
 - The sender has enough funds to do the transaction using range proofs.
 
