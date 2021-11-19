@@ -24,7 +24,7 @@ A _t out of n_ threshold signature scheme is a multi-party digital signature pro
 
 :::
 
-A desired property of threshold signature schemes is _robustness_ in the sense that the protocol can tolerate cheating of a limited number of participants. A robust scheme will run successfully despite cheating participants, if the number of such cheating is below the set number of such. If this goal is attained *after* re-running the protocol, we refer to the property as _semi-robustness_.
+A desired property of threshold signature schemes is _robustness_ in the sense that the protocol can tolerate cheating of a limited number of participants. A robust scheme will run successfully despite cheating participants, if the number of such cheating is below the set number of such. If this goal is guaranteed to be attained after at most a bounded number of re-runs of the protocol, we refer to the property as _semi-robustness_.
 Our customizations augment FROST with robustness in the distributed key generation phase. The robustness is achieved via the exact **identification of a cheating entity** during the key generation. Identifying cheaters further can conclude in preventing cheating if suitable punishments are predicted. The protocol also has two additional important properties that are tailored for our XSP design, namely:
 
 i) achieving  **semi-robustness** during signing by appropriate choice of the set of the signers, besides taking advantage of the cheating identification property during key generation,  and
