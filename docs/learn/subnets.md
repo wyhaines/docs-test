@@ -6,7 +6,7 @@ sidebar_position: 2
 
 **Subnets** are independant networks that can safely exchange messages within the Topos XSP ecosystem.
 
-Topos XSP has been designed from the ground up around the core concept that participating networks should not, for the sake of interoperabillity, give up their freedom to build their own structure and keep their data private. The protocol makes **near-zero assumptions** on their underlying construction thanks to the [UCI](#), a global interface implemented by all subnets to provide the information needed for seamless interoperability.
+Topos XSP has been designed from the ground up around the core concept that participating networks should not, for the sake of interoperabillity, give up their freedom to build their own structure and keep their data private. The protocol makes **near-zero assumptions** on subnets' underlying construction thanks to the [UCI](#), a global interface implemented by all subnets to provide the information needed for seamless interoperability.
 
 ## Types of subnets
 
@@ -18,7 +18,7 @@ Topos XSP subnets can come in various forms:
 
 :::info
 
-While Topos Subnet DevKit is our top priority for now, development of language-specific UCI client implementations by the community is welcome!"
+While Topos Subnet DevKit is our top priority for now, development of language-specific UCI client implementations by the community is welcome!
 
 :::
 
@@ -34,7 +34,7 @@ Once connected to TCE nodes, a subnet registers itself with the TCE. The subnet 
 
 ### Interactions with other subnets
 
-Once known to the TCE, a subnet can start interacting with other subnets, i.e. exchanging [Cross-Subnet Transactions](#cross-subnet-transactions), by submitting [Certificates](#) that implement the UCI.
+Once known to the rest of the XSP ecosystem, a subnet can start interacting with other subnets, i.e., exchanging [Cross-Subnet Transactions](#cross-subnet-transactions), by submitting [Certificates](#) that implement the UCI.
 
 ## Cross-Subnet Transactions
 
@@ -42,6 +42,6 @@ Cross-Subnet (XS) Transactions allow subnets to exchange TOPOS transactions with
 
 :::info
 
-Although only TOPOS XS transactions are supported for now, a future iteration will support transactions of any type of tokens as well as arbitrary messages.
+Although only TOPOS XS transactions are supported for now, future iterations will support transactions of any type of tokens as well as arbitrary messages.
 
 :::
