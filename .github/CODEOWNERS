@@ -1,0 +1,3 @@
+* @toposware/admin
+/docs/learn/uci/authentication.md @toposware/admin @toposware/crypto-frost
+/docs/learn/uci/state-transitions-validity.md @toposware/admin @toposware/crypto-stark
