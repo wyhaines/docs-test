@@ -70,8 +70,33 @@ In the TCE, the per node communication is **logarithmic** in the size of the sys
 
 ## Protocol
 
-To submit a certificate, a subnet $subnet_j$ sends a (certificate, $digest(subnet_j)$) message to its connected TCE nodes which _gossip_ it across the whole TCE network if:
+To submit a certificate $Cert$, a subnet $subnet_j$ sends a ($Cert$, $digest(subnet_j)$) message to the TCE nodes it is connected to. Upon receiving this message, the TCE nodes broadcast it to the rest of the TCE network via _gossip_ **if and only if** the following $valid$ function returns $true$:
 
-- The certificate is valid (TODO: add a link to the right section).
-- Any preceding certificate emitted by $subnet_j$ have been validated.
-- The certificates from $digest(subnet_j)$ have all been validated and exist in the related $history(subnet)$.
+#### $valid(Cert, digest(subnet_j))$
+
+- Every preceding certificate submitted by $subnet_j$ has been validated
+- The certificates from $digest(subnet_j)$ have all been validated and exist in the $history(subnet)$ of their originating subnets.
+
+:::tip Reminder
+$digest(subnet_j)$ contains incoming (from the point of view of $subnet_j$) certificates sent by other subnets.
+:::
+
+### Echo
+
+Upon receiving the gossiped ($Cert$, $digest(subnet_j)$) message, a TCE node executes locally $valid(Cert, digest(subnet_j))$ and, if validated, sends the same message as an **Echo message** to all its peers in its _Echo\*_ sample.
+
+### Ready
+
+Upon receiving more than $E$ Echo messages from its _Echo_ sample, a TCE node sends the same message as a **Ready message** to all its peers in its _Ready\*_ sample.
+
+Similarly, a TCE node sends this Ready message to its peers in its _Ready\*_ sample upon receiving more than $R$ Ready messages from its _Ready_ sample.
+
+### Delivery
+
+Upon receiving more than $D$ Ready message from its _Delivery_ sample, a TCE node delivers the message, adds it to its local $mempool$ and validates its by running the $valid$ function. The validation is run after the delivery because enough TCE nodes have validated the message at the Echo stage.
+
+Subnets connected to this TCE node are notified of the new certificate and can proceed with its full validation (TODO: add link to the relevant part). Once validated, the certificate can be included in the subnet's local state.
+
+:::info Updating TCE node variables
+In parallel, upon inserting a certificate in its mempool, a TCE node updates $history(subnet_i)$ by including $digest(subnet_i)$ as well as the delivered certificate, and $digest(subnet)$ of any subnet addressed to in the list of cross-subnet transactions included in the delivered certificate by including that certificate.
+:::
