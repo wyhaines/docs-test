@@ -1,13 +1,57 @@
 .link {
+  position: relative;
   display: block;
-  width: 300px;
-  height: 260px;
+  width: 400px;
+  height: 320px;
   margin: 8px;
   text-align: center;
   padding-top: 20px;
-  border: 1px solid #f4f4f4;
+  border: 2px solid #29293d;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #fff,
+    #fff 7px,
+    #29293d 1px,
+    #29293d 8px
+  );
+}
+
+.link:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #29293d;
 }
 
 .link:hover {
   text-decoration: none;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #29293d;
+  color: #f4f4f4;
+  display: inline-block;
+  padding: 5px 0;
+  min-width: 332px;
+  height: 70px;
+  line-height: 55px;
+  border-radius: 45px;
 }

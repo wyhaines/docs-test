@@ -10,6 +10,6 @@ interface Props {
 
 export default ({ label, to }: Props) => (
   <Link to={to} className={styles.link}>
-    <h2>{label}</h2>
+    <h2 className={styles.button}>{label}</h2>
   </Link>
 )

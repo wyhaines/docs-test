@@ -4,13 +4,18 @@
  * work well for content-centric websites.
  */
 
- @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Source+Sans+Pro&display=swap');
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Barlow', sans-serif;
 }
 
@@ -18,10 +23,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.3em;
 }
 
-
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #55C595;
+  --ifm-color-primary: #009f9e;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
@@ -42,7 +46,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme='dark'] { 
-  --ifm-background-color: #29293d;  
+html[data-theme='dark'] {
+  --ifm-background-color: #29293d;
   --ifm-background-surface-color: #22222b;
 }
