@@ -23,12 +23,8 @@ Once accepted by the TCE nodes connected to the emitting subnet, the new certifi
 
 ## Validation
 
-Validating a certificate, a logic executed by all TCE nodes, consists in the following steps:
+All TCE nodes, once they have locally delivered a certificate, execute the **certificate validation function**:
 
-1. The certificate is authenticated: the ICE-FROST signature included in the certificate is verified against the ICE-FROST static public key of the emitting subnet.
-2. The certificate zkSTARK proof is verified: the state transitions included in the certificate are all valid with regard to the previous state commitment (the previous certificate).
-3. The dependencies of the certificate have already been received and validated.
-
-:::tip
-The dependencies of a certificate are the previous certificate the former refers to and the certificates from other subnets that involve that same subnet and were emitted since the previous certificate.
-:::
+1. The certificate is authenticated: the ICE-FROST signature included in the certificate is verified against the ICE-FROST static public key of the emitting subnet;
+2. The certificate is well-formed;
+3. The certificate zkSTARK proof is verified: the state transitions included in the certificate are all valid with regard to the previous state commitment (the previous certificate).
