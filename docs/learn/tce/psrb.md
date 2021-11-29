@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The main responsibility of the TCE network is to execute a broadcast primitive named **Probabilistic Secure Reliable Broadcast** (PSRB) that safely propagates certificates across the XSP ecosystem to prevent conflicting certificates.
 
-The protocol does not involve consensus at the ecosystem level. Consensus enforces total ordering of messages, but it is sufficient to have causal ordering for our purposes i.e., certificates from the same subnet do not commute, while two independent certificates from two different subnets commute. Causal ordering is needed to make sure that the protocol processed all dependencies of a specific certificate before delivering it.
+The protocol does not involve consensus at the ecosystem level. Consensus enforces total ordering of messages, but it is sufficient to have causal ordering for our purposes, i.e., certificates from the same subnet do not commute, while two independent certificates from two different subnets commute. Causal ordering is needed to make sure that the protocol processed all dependencies of a specific certificate before delivering it.
 
 This results in a simpler, more efficient and more robust implementation than consensus-based solution, which is great from a security perspective.
 The protocol is permissionless and allows for dynamic reconfiguration.
@@ -44,7 +44,7 @@ A certificate is **incoming** if it contains a cross-subnet transaction addresse
 
 A new TCE node, once it has joined the TCE network, has successfully built three samples of peers:
 
-- An _Echo_ sample $\mathcal{E}$ and its associated threshold $E < \vert \mathcal{E} \vert$ 
+- An _Echo_ sample $\mathcal{E}$ and its associated threshold $E < \vert \mathcal{E} \vert$
 - A _Ready_ sample $\mathcal{R}$ and its associated threshold $R < \vert \mathcal{R} \vert$
 - A _Delivery_ sample $\mathcal{D}$ and its associated threshold $D < \vert \mathcal{D} \vert$
 
@@ -63,7 +63,7 @@ A TCE node interacts with its samples as follows:
 - It **only sends messages** to peers in sets $\tilde \mathcal{E}$ and $\tilde \mathcal{R}$.
 
 :::tip
-In the TCE, the per-node communication is **logarithmic** in the size of the system and the overall communication complexity of the system is quasilinear, this allows the TCE to seamlessly scalable to billions of processes and is in sharp contrast with traditional BFT algorithm which scale poorly as they typically have quadratic communication complexity.
+In the TCE, the per-node communication is **logarithmic** in the size of the system and the overall communication complexity of the system is quasilinear. This allows the TCE to seamlessly scale to billions of processes and to be in sharp contrast with traditional BFT algorithm which scale poorly as they typically have quadratic communication complexity.
 :::
 
 ## Protocol overview
