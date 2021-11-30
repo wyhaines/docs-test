@@ -18,4 +18,4 @@ Cross-subnet communication in Topos XSP lies in the submission of **certificates
 The **previous state commitment** is the state committed in the previous certificate if any, otherwise the genesis state committed during [registration](/learn/uci/subnet-registration).
 :::
 
-Once broadcast and delivered by the TCE, the certificate can be verified and the cross-subnet transaction included in the Terminal.
+Once broadcast and delivered by the TCE, the certificate can be verified and the cross-subnet transaction included in the receiving subnet.
