@@ -6,6 +6,10 @@ sidebar_position: 1
 
 Core to the Topos XSP ecosystem, the **Transmission Control Engine** (TCE) serves as the foundation for consistent cross-subnet communication. Supported by an unlimitedly scalable network of dedicated nodes that run a fully asynchronous broadcast protocol, the TCE innovates by its consensusless approach to reaching fastly and securely agreement on partially ordered sets of certificates.
 
+:::info
+The TCE is **not a blockchain**!
+:::
+
 ## Partial ordering
 
 To ensure a consistent global state with no conflict between certificates, Topos XSP does not involve consensus at the ecosystem level. Consensus enforces total ordering of messages, but **causal ordering** is sufficient for Topos's goals, i.e., certificates from the same subnet do not commute, while two independent certificates from two different subnets do. Causal ordering is needed to make sure that the protocol processes all dependencies of a specific certificate.
