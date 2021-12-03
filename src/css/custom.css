@@ -1,27 +1,10 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+* Any CSS included here will be global. The classic template
+* bundles Infima by default. Infima is a CSS framework designed to
+* work well for content-centric websites.
+*/
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Source+Sans+Pro&display=swap');
-
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Barlow', sans-serif;
-}
-
-.navbar__title {
-  font-size: 1.3em;
-}
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Roboto:wght@400&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
@@ -33,6 +16,95 @@ h6 {
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-font-color-base: rgb(59, 69, 78);
+  --ifm-menu-color-background-active: #fff;
+  --ifm-navbar-height: 80px;
+  --ifm-navbar-padding-horizontal: 2rem;
+  --ifm-navbar-link-color: rgb(59, 69, 78);
+  --ifm-toc-border-color: rgb(211, 220, 228);
+  --ifm-navbar-shadow: rgba(0, 0, 0, 0.05) 0px 4px 10px;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Barlow', sans-serif;
+}
+
+nav {
+  padding-right: 0 !important;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.navbar__title {
+  font-size: 1.5em;
+  position: relative;
+}
+
+.navbar__brand {
+  position: relative;
+}
+
+.navbar__brand:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 90px);
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: var(--ifm-toc-border-color);
+}
+
+.menu__link {
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
+}
+
+.menu__link--active {
+  border-color: var(--ifm-toc-border-color);
+}
+
+.menuLinkText_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebarItem-styles-module {
+  color: rgb(136, 153, 168);
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.menuLinkText_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebarItem-styles-module:hover {
+  color: rgb(136, 153, 168);
+}
+
+.markdown h1:first-child {
+  border-bottom: 1px solid #dfe4ea;
+  padding-bottom: 1.6rem;
+}
+
+aside {
+  background: rgb(243, 245, 246);
 }
 
 .docusaurus-highlight-code-line {
@@ -40,13 +112,4 @@ h6 {
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
-}
-
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-html[data-theme='dark'] {
-  --ifm-background-color: #29293d;
-  --ifm-background-surface-color: #22222b;
 }
