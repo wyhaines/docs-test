@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
 # Introduction
@@ -16,4 +17,4 @@ Blockchain has paved the way for Web3.0, a new era of distributed and decentrali
 
 ## How does Topos XSP work?
 
-Continue with the [Learn](/learn/getting-started) section to learn more about Topos XSP.
+Continue with the [Learn](/general/getting-started) section to learn more about Topos XSP.

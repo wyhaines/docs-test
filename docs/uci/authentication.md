@@ -12,36 +12,30 @@ A basic digital signature allows an _individual_ entity to sign a message. Howev
 
 Authentication is achieved in Toposware ecosystem via our [Threshold Signature Scheme](https://eprint.iacr.org/2021/).
 
-
-
 ## Threshold Signatures: ICE-FROST
 
 To allow a non-unary and dynamic set of signers to sign Certificates against a static public key, Topos XSP makes use of **ICE-FROST**, an in-house customization of the [FROST](https://eprint.iacr.org/2020/852.pdf) threshold signature scheme.
 
 :::tip Threshold Signature
 
-A _t out of n_ threshold signature scheme is a multi-party digital signature protocol such that any honest subset of _n_ signers with cardinality at least _t_  is able to successfully create a valid signature.
+A _t out of n_ threshold signature scheme is a multi-party digital signature protocol such that any honest subset of _n_ signers with cardinality at least _t_ is able to successfully create a valid signature.
 
 :::
 
 A desired property of threshold signature schemes is _robustness_ in the sense that the protocol can tolerate cheating of a limited number of participants. A robust scheme will run successfully despite cheating participants, if the number of such is below the set quantity. If this goal is guaranteed to be attained after at most a bounded number of re-runs of the protocol, we refer to the property as _semi-robustness_.
 Our customizations augment FROST with robustness in the distributed key generation phase. The robustness is achieved via the exact **identification and exclusion of a cheating entity** during the key generation. Identifying cheaters further can conclude in preventing cheating if suitable punishments are predicted. The protocol also has two additional important properties that are tailored for our XSP design, namely:
 
-i) achieving  **semi-robustness** during signing by appropriate choice of the set of the signers, besides taking advantage of the cheating identification property during key generation,  and
+i) achieving **semi-robustness** during signing by appropriate choice of the set of the signers, besides taking advantage of the cheating identification property during key generation, and
 
 ii) allowing a blockchain network to distribute a **static long-running verification key** with respect to which different sets of signers can produce signatures. This allows the verification key associated with each subnet to stay static while the set of potential signers can vary easily. This is a key feature of the XSP, i.e. dynamic networks whose participating nodes arbitrarily join and leave.
-
-
 
 ### ICE-FROST in XSP
 
 ICE-FROST is used in XSP for signing certificates by the subnet validators. The main purpose of signing is authenticating the subnet creating the certificate and verifying the integrity of the certificate, i.e. ensuring that the certificate was not altered while in transit. The number of validators required to generate a valid signature with ICE-FROST can be freely chosen by the subnet. A malicious party would then need to control more than the threshold to sign a false certificate committing to a malicious state that honest validators disagree with. In practice we expect most subnets to run a BFT consensus mechanism, so the XSP recommends a threshold greater than one third of the total number of validators. A greater threshold value increases security at the cost of availability: if there isn't enough honest validators to reach the threshold, then the subnet might be unable to sign a certificate.
 
-When a subnet registration takes place, the initial set of validators runs the initial DKG phase, as a result of which they obtain a static ICE-FROST verification key that is required to verify certificate signatures. This verification key is included at the registration phase and stays static for the lifetime of the given subnet. On the Topos subnet, the set of validators is updated every *epoch* (e.g., approximately every six hours in our case). This is when an update of the shares phase takes place. Since the verification key is designed to be static, the redistribution of shares does not change the group signing and verification keys. Note that both the initial and redistribution phases are *dealerless*.
+When a subnet registration takes place, the initial set of validators runs the initial DKG phase, as a result of which they obtain a static ICE-FROST verification key that is required to verify certificate signatures. This verification key is included at the registration phase and stays static for the lifetime of the given subnet. On the Topos subnet, the set of validators is updated every _epoch_ (e.g., approximately every six hours in our case). This is when an update of the shares phase takes place. Since the verification key is designed to be static, the redistribution of shares does not change the group signing and verification keys. Note that both the initial and redistribution phases are _dealerless_.
 
-The certificates are signed and then propagated to the [TCE nodes](/learn/tce/tce-nodes) the subnet is connected to. When it reaches the other TCE nodes, the signature is verified using the subnet's verification key. The generated signature has format identical to a regular Schnorr signature (even though it is generated by a group of signers instead of individual ones), hence can be verified by any entity capable of verifying Schnorr signatures. Therefore, checking the certificate signature before processing the certificate is very fast and effectively prevents spamming if an adversary sends multiple certificates with invalid signatures.
-
-
+The certificates are signed and then propagated to the [TCE nodes](/tce/tce-nodes) the subnet is connected to. When it reaches the other TCE nodes, the signature is verified using the subnet's verification key. The generated signature has format identical to a regular Schnorr signature (even though it is generated by a group of signers instead of individual ones), hence can be verified by any entity capable of verifying Schnorr signatures. Therefore, checking the certificate signature before processing the certificate is very fast and effectively prevents spamming if an adversary sends multiple certificates with invalid signatures.
 
 ### ICE-FROST Protocol Outline
 
@@ -71,23 +65,18 @@ As mentioned above, in a Schnorr signature scheme, the signer initially generate
 
 #### Signing
 
-A group of signers with at least *t* members is randomly selected to generate the *(t,n)*-threshold signature. However, the generation of a valid signature requires the cooperation of at least *t* **honest** participants. If a participant cheats during signing and uses an unmatching signing key, it will be detected. At this point, the signing protocol will run from the beginning but exclude the cheater participant. As long as the initially chosen set of signers contains enough honest signers, the signing protocol will successfully generate a valid signature (semi-robustness). To ensure semi-robustness or achieve it with high probability, a large enough set of signers (or even all of the participants) should be chosen, at the cost of more communication between participants and a heavier protocol.
+A group of signers with at least _t_ members is randomly selected to generate the _(t,n)_-threshold signature. However, the generation of a valid signature requires the cooperation of at least _t_ **honest** participants. If a participant cheats during signing and uses an unmatching signing key, it will be detected. At this point, the signing protocol will run from the beginning but exclude the cheater participant. As long as the initially chosen set of signers contains enough honest signers, the signing protocol will successfully generate a valid signature (semi-robustness). To ensure semi-robustness or achieve it with high probability, a large enough set of signers (or even all of the participants) should be chosen, at the cost of more communication between participants and a heavier protocol.
 
 After the random set of signers is selected, they will fetch each other's commitments that have been published and stored during the preprocessing round. Each participant checks the validity of the obtained values and calculates a _binding value_ to the message and the group of signers. Then, each one of them derives another commitment value that binds the message, the set of signing participants, and each participant's commitment to each signature share. This latter commitment will be used to calculate the group's commitment value. The challenge value of Schnorr's signature will then be generated by applying a hash function on the group's commitment value, public verification key and message. Each participant responds to the challenge, using its committed nonces (from preprocessing) and their signing key share. Every participant then checks the validity of responses and, if they all passed, adds all the responses to generate the group's threshold signature. All honest participants will end up with the same valid signature. Note that if any of the checks during signing fails, the signing phase will have to be re-run from the beginning, excluding the set of discovered malicious signers.
-
-
-
 
 ### Benefits of ICE-FROST over FROST
 
 The main benefits of ICE-FROST over its predecessor FROST are:
 
 - Robustness of key generation phase, meaning that we are guaranteed to obtain a verification key and/or redistribute the shares, without aborting the protocol.
--  Providing _optional_ semi-robustness for the signing protocol. Each subnet can trade efficiency with the size of the set of signers for semi-robustness guarantee. The more signers means the heavier protocol but an increased guarantee of successfully generating a valid signature.
+- Providing _optional_ semi-robustness for the signing protocol. Each subnet can trade efficiency with the size of the set of signers for semi-robustness guarantee. The more signers means the heavier protocol but an increased guarantee of successfully generating a valid signature.
 - Provable identifiability of cheating entities, who are either sending malformed shares or making false accusations.
 - Redistribution feature of shares, which allows the group public key to be static, meaning that it could be used for as long as required by the group or in our specific case by the subnet.s
-
-
 
 ### Future Work and Next Steps
 

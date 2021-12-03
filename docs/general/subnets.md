@@ -34,7 +34,7 @@ Once it has integrated a UCI implementation, a subset starts connecting to the [
 
 ### Registration
 
-Once connected to TCE nodes, a subnet registers itself with the TCE. The subnet registration consists in the submission of a [Registration Certificate](learn/uci/subnet-registration), a data structure that includes the genesis state of the subnet—relatively to its lifetime in the TCE—and its static public key (read more in [authentication](learn/uci/authentication)).
+Once connected to TCE nodes, a subnet registers itself with the TCE. The subnet registration consists in the submission of a [Registration Certificate](uci/subnet-registration), a data structure that includes the genesis state of the subnet—relatively to its lifetime in the TCE—and its static public key (read more in [authentication](uci/authentication)).
 
 ### Interactions with other subnets
 
