@@ -15,7 +15,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'toposware', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -24,6 +23,7 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          sidebarCollapsible: false,
           // Please change this to your repo.
           remarkPlugins: [math],
           rehypePlugins: [katex],
@@ -49,30 +49,28 @@ module.exports = {
           alt: 'Topos Docs',
           src: 'img/logo.svg',
         },
-        items: [
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
       },
       footer: {
         style: 'dark',
+        logo: {
+          alt: 'Toposware',
+          href: 'https://toposware.com',
+          src: 'img/logo-full-inverted.svg',
+        },
         links: [
           {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
+                label: 'Twitter',
                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
               {
-                label: 'Discord',
+                label: 'LinkedIn',
                 href: 'https://discordapp.com/invite/docusaurus',
               },
               {
-                label: 'Twitter',
+                label: 'Medium',
                 href: 'https://twitter.com/docusaurus',
               },
             ],
@@ -87,7 +85,7 @@ module.exports = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `©Toposware, ${new Date().getFullYear()} All Rights Reserved`,
       },
       prism: {
         theme: lightCodeTheme,
