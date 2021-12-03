@@ -4,9 +4,9 @@ sidebar_position: 3
 
 # State Transitions Validity
 
-Topos is an ecosystem of interoperable blockchains, each of them called a [subnet](/learn/subnets). The _state_ of a blockchain represents information, which includes account balances and public identities. Transactions between the accounts, within a subnet or across multiple subnets, change the state of the subnet(s); that is, lead to a state transition. In the case of Topos [cross-subnet transactions](/learn/subnets#cross-subnet-transactions), these transactions are aggregated in a certificate by a sending subnet (Initial) and then processed by the receiving subnets (Terminals). The internal state of subnets is private, but the cross-subnet transactions are public. For the integrity of the Topos ecosystem, it is important that the state transition computation at each subnet is done correctly (the state transition is _valid_), and is verifiable efficiently.
+Topos is an ecosystem of interoperable blockchains, each of them called a [subnet](/learn/subnets). The _state_ of a blockchain represents information, which includes account balances and public identities. Transactions between the accounts, within a subnet or across multiple subnets, change the state of the subnet(s); that is, lead to a state transition. In the case of Topos [cross-subnet transactions](/learn/subnets#cross-subnet-transactions), these transactions are aggregated in a certificate by a sending subnet and then processed by the receiving subnets. The internal state of subnets is private, but the cross-subnet transactions are public. For the integrity of the Topos ecosystem, it is important that the state transition computation at each subnet is done correctly (the state transition is _valid_), and is verifiable efficiently.
 
-In a trustless setup, where the verifier does not trust the certificate producer, verifying each individual transaction and its corresponding state transition would be computationally prohibitive for a large number of transactions, thus impeding scalability. This bottleneck can be removed if the verifier checks the integrity of the computation provided by the prover without checking each transaction. In addition, the zero-knowledge property of the produced certificate proofs allows a sending subnet to prove the validity of its current state without compromising private internal information, such as account addresses or account balances. Topos achieves both scalability and privacy by adapting and designing a zk-STARK as discussed in more details below.
+In a trustless setup, where the verifier does not trust the certificate producer, verifying each individual transaction and its corresponding state transition would be computationally prohibitive for a large number of transactions, thus impeding scalability. This bottleneck can be removed if the verifier checks the integrity of the computation provided by the prover without checking each transaction. In addition, the zero-knowledge property of the produced certificate proofs allows the submitting subnet to prove the validity of its current state without compromising private internal information, such as account addresses or account balances. Topos achieves both scalability and privacy by adapting and designing a zk-STARK as discussed in more details below.
 
 ## zk-STARK
 
@@ -36,7 +36,7 @@ In practice, CI proofs using STARK are first converted to sequences of machine s
 
 Topos XSP uses zk-STARK where each subnet proves the validity of its state transition to the rest of the ecosystem, without revealing its internal state. More specifically, Topos XSP leverages zk-STARK proofs to achieve interoperability between its heterogeneous subnets, and more generally, to the other blockchains.The outline of how STARK is used in the Topos ecosystem is discussed below.
 
-On the sending subnet, all the outgoing cross-subnet transactions are batched into certificates, with a fixed number of transactions per certificate. These certificates provide the following necessary checks in a form of STARK proofs that, for each transaction (recall the current Topos STARK proofs operate on the account-based model):
+On the submitting subnet, all the outgoing cross-subnet transactions are batched into certificates, with a fixed number of transactions per certificate. These certificates provide the following necessary checks in a form of STARK proofs that, for each transaction (recall the current Topos STARK proofs operate on the account-based model):
 
 - The amount to be sent is positive.
 
@@ -66,4 +66,4 @@ A Topos XSP STARK proof checks the following:
 
 At the moment, each certificate has at most 14 STARK proofs. The prover is the certificate producing entity, and the verifiers are the TCE nodes and the receiving subnets. However, note that any entity can verify this certificate, since the public inputs are the Merkle roots of the previous and current certificates.
 
-For an internal transaction or at a receiving subnet of the certificate, the STARK proof additionally checks that the Merkle leaf of receiver(s), and consequently, the Merkle tree of the subnet is correctly updated.
+For an internal transaction or at the receiving subnets of the certificate, the STARK proof additionally checks that the Merkle leaf of receiver(s), and consequently, the Merkle tree of the subnet is correctly updated.
