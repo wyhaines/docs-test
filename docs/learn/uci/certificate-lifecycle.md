@@ -12,7 +12,7 @@ Producing a certificate comes down to creating a data structure that complies wi
 
 ## Propagation
 
-When a subnet wants to emit a new certificate, it needs to propagate it to the rest of the Topos XSP network. The propagation is conducted by the [TCE](#) network built around the [PSRB](/tce/psrb) broadcast primitive.
+When a subnet wants to emit a new certificate, it needs to propagate it to the rest of the Topos XSP network. The propagation is conducted by the [TCE](#) network built around the [PSRB](/learn/tce/psrb) broadcast primitive.
 
 Subnets are all connected to a random set of TCE nodes with which they can interact. [Subnet node]—[TCE node] interactions are twofold:
 

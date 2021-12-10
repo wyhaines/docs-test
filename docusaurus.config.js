@@ -49,43 +49,37 @@ module.exports = {
           alt: 'Topos Docs',
           src: 'img/logo.svg',
         },
-      },
-      footer: {
-        style: 'dark',
-        logo: {
-          alt: 'Toposware',
-          href: 'https://toposware.com',
-          src: 'img/logo-full-inverted.svg',
-        },
-        links: [
+        items: [
           {
-            title: 'Community',
-            items: [
-              {
-                label: 'Twitter',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'LinkedIn',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Medium',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
+            label: 'Website',
+            to: 'https://toposware.com',
+            position: 'right',
           },
           {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
+            label: ' ',
+            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            position: 'right',
+            className: 'social twitter',
+          },
+          {
+            label: ' ',
+            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            position: 'right',
+            className: 'social linkedin',
+          },
+          {
+            label: ' ',
+            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            position: 'right',
+            className: 'social medium',
+          },
+          {
+            label: ' ',
+            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            position: 'right',
+            className: 'social github',
           },
         ],
-        copyright: `©Toposware, ${new Date().getFullYear()} All Rights Reserved`,
       },
       prism: {
         theme: lightCodeTheme,

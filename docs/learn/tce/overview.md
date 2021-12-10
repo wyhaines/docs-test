@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting Started
+# Overview
 
 Core to the Topos XSP ecosystem, the **Transmission Control Engine** (TCE) serves as the foundation for consistent cross-subnet communication. Supported by an unlimitedly scalable network of dedicated nodes that run a fully asynchronous broadcast protocol, the TCE innovates by its consensusless approach to reaching fastly and securely agreement on partially ordered sets of certificates.
 
@@ -18,7 +18,7 @@ Relying on causal—hence partial—ordering rather than total ordering as enfor
 
 ## Unbound Scalability
 
-The [Probabilistic Secure Reliable Broadcast](/tce/psrb) (PSRB), the broadcast primitive driving the TCE, enforces a consistent broadcast of certificates **without the need for a traditional BFT protocol** where known participants synchronously exchange messages to decide as a group on some data. This makes the TCE network **much more scalable** than common consensus-based networks that are inherently limited by a quadratic message complexity and as such cannot expand by more than a few hundreds of participants.
+The [Probabilistic Secure Reliable Broadcast](/learn/tce/psrb) (PSRB), the broadcast primitive driving the TCE, enforces a consistent broadcast of certificates **without the need for a traditional BFT protocol** where known participants synchronously exchange messages to decide as a group on some data. This makes the TCE network **much more scalable** than common consensus-based networks that are inherently limited by a quadratic message complexity and as such cannot expand by more than a few hundreds of participants.
 
 ## Asynchrony
 

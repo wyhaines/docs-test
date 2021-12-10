@@ -1,12 +1,12 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Subnets
 
 **Subnets** are independant networks that can safely exchange messages within the Topos XSP ecosystem.
 
-Topos XSP has been designed from the ground up around the core concept that participating networks should not, for the sake of interoperabillity, give up their freedom to build their own structure and keep their data private. The protocol makes **near-zero assumptions** on subnets' underlying construction thanks to the [UCI](#), a global interface implemented by all subnets to provide the information needed for seamless interoperability.
+Topos XSP has been designed from the ground up around the core concept that participating networks should not, for the sake of interoperabillity, give up their freedom to build their own structure and keep their data private. The protocol makes **near-zero assumptions** on subnets' underlying construction thanks to the [UCI](/learn/uci/overview), a global interface implemented by all subnets to provide the information needed for seamless interoperability.
 
 ## Types of subnets
 
@@ -19,7 +19,7 @@ Topos XSP subnets can come in various forms:
 The UCI is the center piece that allows projects not built with Topos Subnet DevKit to be compatible with the Topos XSP ecosystem: using future UCI client implementations, projects of any form will be able to produce data ready to be certified and accepted by all other subnets.
 
 :::info
-Read more about the [UCI](#).
+Read more about the [UCI](/learn/uci/overview).
 :::
 
 :::tip
@@ -34,11 +34,11 @@ Once it has integrated a UCI implementation, a subset starts connecting to the [
 
 ### Registration
 
-Once connected to TCE nodes, a subnet registers itself with the TCE. The subnet registration consists in the submission of a [Registration Certificate](uci/subnet-registration), a data structure that includes the genesis state of the subnet—relatively to its lifetime in the TCE—and its static public key (read more in [authentication](uci/authentication)).
+Once connected to TCE nodes, a subnet registers itself with the TCE. The subnet registration consists in the submission of a [Registration Certificate](/learn/uci/subnet-registration), a data structure that includes the genesis state of the subnet—relatively to its lifetime in the TCE—and its static public key (read more in [authentication](/learn/uci/authentication)).
 
 ### Interactions with other subnets
 
-Once known to the rest of the XSP ecosystem, a subnet can start interacting with other subnets, i.e., exchanging [Cross-Subnet Transactions](#cross-subnet-transactions), by submitting [Certificates](#) that implement the UCI.
+Once known to the rest of the XSP ecosystem, a subnet can start interacting with other subnets, i.e., exchanging [Cross-Subnet Transactions](#cross-subnet-transactions), by submitting [Certificates](/learn/uci/overview#certificate) that implement the UCI.
 
 ## Cross-Subnet Transactions
 
