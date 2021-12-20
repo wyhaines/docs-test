@@ -64,7 +64,7 @@ module.exports = {
           },
           {
             label: ' ',
-            to: 'https://www.linkedin.com/company/toposware/mycompany/',
+            to: 'https://www.linkedin.com/company/toposware',
             position: 'right',
             className: 'social linkedin',
           },
