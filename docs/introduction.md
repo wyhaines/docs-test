@@ -23,7 +23,7 @@ Blockchain scalability is closely pegged to two of its upmost metrics: its **lat
 
 **Transaction finality**, probabilistic or deterministic, **has to be considered** when evaluating blockchain performance. In this context, latency is defined as the time it takes for a transaction to be finalized, while throughput is defined as the number of finalized transactions per unit of time.
 
-The second phase in blockchain technology history has seen the generalization of deterministic finality, commonly achieved by means of classic BFT algorithms. Such algorithms have shown their limitations in terms of scalability for they come with a quadratic message complexity, and as such lead to higher settlement latency as the number of validators increases.
+A latter phase in blockchain technology history has seen the generalization of deterministic finality, commonly achieved by means of classic BFT algorithms. Such algorithms have shown their limitations in terms of scalability for they come with a quadratic message complexity, and as such lead to higher settlement latency as the number of validators increases.
 
 :::info Multi-chain projects
 Multi-chain projects based on sharding assign validators to shards in order to verify their state transitions. A bounded number of validators greatly impacts the scalability of such system as it limits the theoretical number of available shards.

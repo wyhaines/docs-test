@@ -20,7 +20,7 @@ A message exchanged between subnets takes the form of a [certificate](/learn/uci
 
 Global consistency of messages exchanged between various **public** and **private** subnets is not ensured by consensus but by a **reliable broadcast primitive** executed by the [Transmission Control Engine](/learn/tce/overview). This is in clear contrast with other multi-chain projects which typically rely on a consensus layer to enforce total ordering of cross-chain messages.
 
-The Transmission Control Engine is supported by a network of auxiliary nodes ([TCE nodes](/learn/tce/tce-nodes)) that receive certificates submitted by subnets to safely propagate and deliver them to all relevant subnets.
+The Transmission Control Engine is supported by a network of auxiliary nodes (TCE nodes) that receive certificates submitted by subnets to safely propagate and deliver them to all relevant subnets.
 
 ## DevKits
 

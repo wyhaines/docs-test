@@ -64,7 +64,7 @@ In the TCE, the per-node **communication is logarithmic** in the size of the sys
 
 ## Protocol overview
 
-To submit a certificate `Cert`, the subnet validator broadcasts a message `m = (Cert, digest(S_j))` to the TCE nodes it is connected to. Upon receiving this message, the TCE nodes propagate it to the rest of the TCE network via _gossip_.
+To submit a certificate `Cert`, the subnet broadcasts a message `m = (Cert, digest(S_j))` to the TCE nodes it is connected to. Upon receiving this message, the TCE nodes propagate it to the rest of the TCE network via _gossip_.
 
 :::tip Reminder
 `digest(S_j)` contains incoming (from the point of view of subnet `S_j`) certificates sent by other subnets since `S_j`'s last certificate.

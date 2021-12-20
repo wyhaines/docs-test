@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Core to the Topos ecosystem, the **Transmission Control Engine** (TCE) serves as the foundation for consistent cross-subnet communication. Supported by an unlimitedly scalable network of dedicated nodes that run a fully asynchronous broadcast protocol, the TCE innovates by reaching agreement quickly and securely on certificates without relying on consensus: the TCE is **consensusless**.
+Core to the Topos ecosystem, the **Transmission Control Engine** (TCE) serves as the foundation for consistent cross-subnet communication. Supported by an unlimitedly scalable network of dedicated nodes that run a fully asynchronous broadcast protocol, the TCE innovates by reaching agreement on certificates without relying on consensus: the TCE is **consensusless**.
 
 :::info
 

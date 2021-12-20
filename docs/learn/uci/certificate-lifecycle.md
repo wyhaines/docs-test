@@ -31,9 +31,8 @@ Once received by the TCE nodes connected to the submitting subnet, the certifica
 
 Upon delivering the certificate, all the TCE nodes execute the **certificate validation function**, ensuring that:
 
-1. The [ICE-FROST](/learn/uci/authentication) signature is valid;
-2. The certificate is well-formed;
-3. The zk-STARK proof is valid.
+1. The certificate is well-formed;
+2. The zk-STARK proof is valid.
 
 ## Inclusion
 

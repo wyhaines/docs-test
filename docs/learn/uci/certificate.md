@@ -26,7 +26,7 @@ Once broadcast and delivered by the TCE, the certificate can be verified and the
 A certificate is defined as:
 
 - `subnet_id` is the unique identifier of the subnet;
-- `cert_prev` is the reference to subnet's previous certificate;
+- `cert_prev` is a reference to the subnet's previous certificate;
 - `sig` is the Schnorr-based signature that authenticates the certificate;
 - `XS_list` represents the list of included cross-subnet transactions;
 - `proofs` is the list of STARK proofs;
