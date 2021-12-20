@@ -28,7 +28,7 @@ ii) allowing a blockchain network to distribute a **static long-running verifica
 
 ### ICE-FROST in Topos
 
-ICE-FROST is used in Topos for signing certificates. The main purpose of signing is authenticating the subnet creating the certificate and verifying its integrity, i.e., ensuring that it was not altered while in transit. The number of signers required to generate a valid signature with ICE-FROST can be freely chosen by the subnet. A malicious party would then need to control more than the threshold to sign a certificate committing to an arbitrary state that honest signers disagree with, or to equivocate on two [conflicting certificates](/sfdgsdgf).
+ICE-FROST is used in Topos for signing certificates. The main purpose of signing is authenticating the subnet creating the certificate and verifying its integrity, i.e., ensuring that it was not altered while in transit. The number of signers required to generate a valid signature with ICE-FROST can be freely chosen by the subnet. A malicious party would then need to control more than the threshold to sign a certificate committing to an arbitrary state that honest signers disagree with, or to equivocate on two [conflicting certificates](/learn/tce/conflicting-certificates).
 
 :::info
 In practice, we expect most subnets to run a BFT consensus mechanism, so we recommend a threshold greater than one third of the total number of validators.

@@ -12,7 +12,7 @@ Producing a certificate comes down to creating a data structure that complies wi
 
 ## Propagation
 
-When a subnet wants to submit a new certificate, it needs to propagate it to the rest of the Topos ecosystem. Certificate delivery is handled by the [TCE](#) network built on top of the [Probabilistic Secure Reliable Broadcast](/learn/tce/psrb) primitive.
+When a subnet wants to submit a new certificate, it needs to propagate it to the rest of the Topos ecosystem. Certificate delivery is handled by the [TCE](/learn/tce/overview) network built on top of the [Topos Reliable Broadcast](/learn/tce/trb) primitive.
 
 Subnets are all connected to _random_ sets of TCE nodes with which they interact in order to propagate certificates, and therefore cross-subnet transactions.
 

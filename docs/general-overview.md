@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # General overview
 
-Topos is an open protocol of **interoperable** [subnets](/subnets) (blockchains or legacy systems) that makes no compromises on their **privacy**. Typical trust assumptions and sharing of internal state are replaced by cryptographic proofs that allow for frictionless cross-subnet communication. With a fast and unlimitedly scalable transmission layer, the protocol is built for efficiency and resilience, and aims at bridging all blockchains and legacy systems in a seamless way.
+Topos is an open protocol of **interoperable** [subnets](/learn/subnets/overview) (blockchains or legacy systems) that makes no compromises on their **privacy**. Typical trust assumptions and sharing of internal state are replaced by cryptographic proofs that allow for frictionless cross-subnet communication. With a fast and unlimitedly scalable transmission layer, the protocol is built for efficiency and resilience, and aims at bridging all blockchains and legacy systems in a seamless way.
 
 Joining the open Topos ecosystem, i.e., becoming a subnet, boils down to implementing the **Unified Certification Interface** (or using an existing implementation) and interacting with the **Transmission Control Engine** to start exchanging cross-subnet messages with the rest of the protocol participants.
 
