@@ -15,6 +15,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'toposware', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
+  trailingSlash: false,
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -57,25 +58,25 @@ module.exports = {
           },
           {
             label: ' ',
-            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            to: 'https://twitter.com/Topos_Network',
             position: 'right',
             className: 'social twitter',
           },
           {
             label: ' ',
-            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            to: 'https://www.linkedin.com/company/toposware/mycompany/',
             position: 'right',
             className: 'social linkedin',
           },
           {
             label: ' ',
-            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            to: 'https://medium.com/topos-network',
             position: 'right',
             className: 'social medium',
           },
           {
             label: ' ',
-            to: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            to: 'https://github.com/toposware',
             position: 'right',
             className: 'social github',
           },
