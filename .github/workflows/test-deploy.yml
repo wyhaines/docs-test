@@ -2,7 +2,7 @@ name: Test deployment
 
 on:
   pull_request:
-    branches: [source]
+    branches: [master]
 
 jobs:
   test-deploy:
