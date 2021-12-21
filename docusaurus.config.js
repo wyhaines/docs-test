@@ -3,6 +3,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 const math = require('remark-math')
 const katex = require('rehype-katex')
 
+const metaDescription =
+  'Documentation of Topos, a consensusless, trust-free, privacy-enhancing interoperability protocol to bridge blockchains'
+const metaImage = '/img/banner-topos-seo.png'
+
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -39,6 +43,65 @@ module.exports = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'author',
+          content: 'Toposware',
+        },
+        {
+          name: 'description',
+          content: metaDescription,
+        },
+        {
+          name: 'og:description',
+          content: metaDescription,
+        },
+        {
+          name: 'image',
+          content: metaImage,
+          property: 'og:image',
+        },
+        {
+          name: 'og:image',
+          content: metaImage,
+        },
+        {
+          name: 'title',
+          content: 'Topos Docs',
+        },
+        {
+          name: 'og:title',
+          content: 'Topos Docs',
+        },
+        {
+          name: 'og:type',
+          content: 'website',
+        },
+        {
+          name: 'keywords',
+          content: 'blockchain, interoperability, consensus, network',
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:creator',
+          content: 'Toposware',
+        },
+        {
+          name: 'twitter:title',
+          content: 'Topos Docs',
+        },
+        {
+          name: 'twitter:description',
+          content: metaDescription,
+        },
+        {
+          name: 'og:image',
+          content: metaImage,
+        },
+      ],
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true,
