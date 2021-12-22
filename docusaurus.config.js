@@ -5,7 +5,7 @@ const katex = require('rehype-katex')
 
 const metaDescription =
   'Documentation of Topos, a consensusless, trust-free, privacy-enhancing interoperability protocol to bridge blockchains'
-const metaImage = '/img/banner-topos-seo.png'
+const metaImage = 'https://docs.toposware.com/img/banner-topos-seo.png'
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
