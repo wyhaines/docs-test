@@ -46,7 +46,7 @@ A new TCE node, once it has joined the TCE network, has successfully built three
 - A `Ready` sample $\mathcal{R}$ and its associated threshold $R < \vert \mathcal{R} \vert$
 - A `Delivery` sample $\mathcal{D}$ and its associated threshold $D < \vert \mathcal{D} \vert$
 
-Starting from this basis, a TCE node node starts exchanging _sample-specific_ subcription messages with its `Echo` and `Ready` peers.
+Starting from this basis, a TCE node starts exchanging _sample-specific_ subcription messages with its `Echo` and `Ready` peers.
 
 Upon receiving _sample-specific_ subscription messages from other nodes, a TCE node adds the corresponding message senders in new samples in the following manner:
 
