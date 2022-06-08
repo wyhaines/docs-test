@@ -19,7 +19,7 @@ Blockchain has paved the way for Web 3.0, a new era of distributed and decentral
 
 ### Scalability
 
-Blockchain scalability is closely pegged to two of its upmost metrics: its **latency** (_speed_) and its **throughput** (_capacity_). Latency represents the time a transaction takes to be inserted in a block and for the latter to be accepted by the network, while throughput relates to the number of transactions the network is capable of adding on chain per unit of time. For dubious reasons, these concepts are often made misleading and thus prevent the community from gauging the performance of a blockchain system.
+Blockchain scalability is closely pegged to two of its upmost metrics: its **latency** (_speed_) and its **throughput** (_capacity_). Latency represents the time a transaction takes to be inserted in a block and for the latter to be accepted by the network, while throughput relates to the number of transactions the network is capable of adding on chain per unit of time. For uncertain reasons, these concepts are often made misleading and thus prevent the community from gauging the performance of a blockchain system.
 
 **Transaction finality**, probabilistic or deterministic, **has to be considered** when evaluating blockchain performance. In this context, latency is defined as the time it takes for a transaction to be finalized, while throughput is defined as the number of finalized transactions per unit of time.
 
