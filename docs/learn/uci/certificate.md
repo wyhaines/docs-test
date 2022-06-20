@@ -6,18 +6,14 @@ sidebar_position: 2
 
 ## What is a certificate?
 
-Cross-subnet communication in Topos lies in the submission of **certificates**—data structures that certify cross-subnet transactions. Any subnet participants can send an outgoing transaction towards another subnet.
+Cross-subnet communication in Topos lies in the submission of **certificates**—data structures that certify subnet state transitions. Any subnet participants can send an outgoing message towards another subnet.
 
 It is the role of every subnet to:
 
 - identify key participants;
-- batch such transactions in a certificate;
-- include a cryptographic proof of the [validity of the state transition](/learn/uci/state-transitions-validity) since the previously committed state;
+- batch transactions in a certificate;
+- include a cryptographic proof of the [validity of the state transition](/learn/uci/state-transitions-validity);
 - [sign](/learn/uci/authentication) the certificate.
-
-:::tip
-The **previously committed state** is the state committed in the previous certificate, or the initial state committed during [registration](/learn/uci/subnet-registration).
-:::
 
 Once broadcast and delivered by the TCE, the certificate can be verified and the cross-subnet transaction included in the receiving subnet.
 
@@ -26,13 +22,9 @@ Once broadcast and delivered by the TCE, the certificate can be verified and the
 A certificate is defined as:
 
 - `subnet_id` is the unique identifier of the subnet;
-- `cert_prev` is a reference to the subnet's previous certificate;
-- `sig` is the Schnorr-based signature that authenticates the certificate;
-- `XS_list` represents the list of included cross-subnet transactions;
-- `proofs` is the list of STARK proofs;
-- `proofs_pub_inputs` is the set of STARK public inputs against which the proofs are verified;
-
-Additionally, a [registration certificate](/learn/uci/subnet-registration) includes:
-
-- `sig_pub_key` is the subnet's signature public key;
-- `init_state_comm` is the commitment of the subnet's initial state.
+- `prev_state_hash` is the previous subnet state commitment (from the previous certificate);
+- `state_hash` is the current subnet state commitment;
+- `proof` is the zkSTARK proof of validity;
+- `XS_list` represents the list of included cross-subnet messages;
+- `proof_XS_list` is the list of inclusion proofs of cross-subnet messages in the proven
+  state transition;

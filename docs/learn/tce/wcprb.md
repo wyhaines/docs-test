@@ -2,14 +2,14 @@
 sidebar_position: 3
 ---
 
-# Topos Reliable Broadcast
+# Weak Causal Probabilistic Reliable Broadcast
 
-The main responsibility of the TCE network is to execute a broadcast primitive named the **Topos Reliable Broadcast** (TRB) that propagates and securely delivers certificates across the Topos ecosystem to prevent [conflicting certificates](/learn/tce/conflicting-certificates).
+The main responsibility of the TCE network is to execute a broadcast primitive named the **Weak Causal Probabilistic Reliable Broadcast** (WCPRB) that propagates and securely delivers certificates across the Topos ecosystem to prevent [conflicting certificates](/learn/tce/conflicting-certificates).
 
-By its consensusless nature, the TRB is a simpler, more efficient and more robust implementation than consensus-based solution, which is important from a security perspective.
+By its consensusless nature, the WCPRB is a simpler, more efficient and more robust implementation than consensus-based solution, which is important from a security perspective.
 The protocol is permissionless and allows for dynamic reconfiguration.
 
-The TRB exposes the following interface:
+The WCPRB exposes the following interface:
 
 - `broadcast(m)`: used by a process inside the system to broadcast a message `m`.
 - `deliver(p,m)`: used by a process inside the system to handle the delivery of a message `m` from sender `p`.
@@ -26,7 +26,7 @@ And satisfies the following key **properties**:
 
 ## Setup
 
-To correctly execute the TRB protocol, TCE nodes locally hold the following **variables**:
+To correctly execute the WCPRB protocol, TCE nodes locally hold the following **variables**:
 
 `history(S_j)`: The local set of accepted **incoming and outgoing** certificates involving subnet `S_j`.
 
@@ -83,5 +83,5 @@ Before applying the certificate from subnet `S_j`​ to its state, a correct TCE
 Once a certificate passes validation, the TCE node applies the certificate to its local state. Applying a certificate means that the TCE node adds the certificate `Cert` and its digest `digest(S_j)` to the history of subnet `S_j`​.
 
 :::tip Amplification step
-Having the ready sample $\mathcal{E}$ is paramount for the **totality property** of the TRB, as it creates a feedback loop. Consequently, either all correct processes will eventually deliver `m`, or none of them will.
+Having the ready sample $\mathcal{E}$ is paramount for the **totality property** of the WCPRB, as it creates a feedback loop. Consequently, either all correct processes will eventually deliver `m`, or none of them will.
 :::

@@ -10,7 +10,7 @@ Once built on top of a UCI implementation, a subnet connects to the [TCE](/learn
 
 ## Registration
 
-Upon connecting to TCE nodes, a subnet registers itself with the TCE. The subnet registration consists in the submission of a [registration certificate](/learn/uci/subnet-registration), a certificate that includes the initial state of the subnet—relatively to its lifetime in the TCE—and its long-lived public key (for certificate [authentication](/learn/uci/authentication)). The initial state is stored by TCE nodes to validate subsequent state transitions, while both TCE nodes and subnets save the long-lived public key to authenticate future certificates.
+Upon connecting to TCE nodes, a subnet registers itself with the [Topos subnet](/learn/subnets/topos-subnet). The subnet registration consists in the submission of a dedicated transaction that includes the long-lived public key (for certificate [authentication](/learn/uci/authentication)). Subnets save the long-lived public key to authenticate future certificates.
 
 ## Interactions with other subnets
 
