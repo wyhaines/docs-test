@@ -2,6 +2,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 const math = require('remark-math')
 const katex = require('rehype-katex')
+const gtm = require('docusaurus-gtm-plugin')
 
 const metaDescription =
   'Documentation of Topos, a consensusless, trust-free, privacy-enhancing interoperability protocol to bridge blockchains'
@@ -36,14 +37,12 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        gtag: {
-          trackingID: 'G-1VZC4YQ8ZY',
-          anonymizeIP: true,
-        },
       }),
     ],
   ],
-
+  plugins: [
+    [gtm, {id: 'GTM-MMSJVKH'}]
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
