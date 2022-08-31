@@ -14,11 +14,11 @@ The [Topos zkVM](/learn/zkvm/overview) is a zero-knowledge virtual machine playi
 
 ## Universal Certification Interface
 
-The protocol abstracts the internal structure of a subnet by means of the [Universal Certification Interface](/learn/uci/overview), a shared interface implemented by all subnets to communicate in a standardized manner.
+The protocol abstracts the internal structure of a subnet by means of the [Universal Certification Interface](/learn/uci/certificate), a shared interface implemented by all subnets to communicate in a standardized manner.
 
-Specifications laid down by the UCI detail the requirements for subnets to exchange messages with each other: state transitions their validity must be proven, and messages must be authenticated.
+Specifications laid down by the UCI detail the requirements for subnets to exchange messages with each other: state transitions validity must be proven, and messages must be authenticated.
 
-A message exchanged between subnets is delivered as part of a [certificate](/learn/uci/overview#certificate), a data structure that complies with the UCI, i.e., is correctly constructed, is signed with a valid signature, and contains a valid state transition.
+A [cross-subnet message](/learn/subnets/cross-subnet-messages)—asset transfer or arbitrary contract call—exchanged between subnets is delivered as part of a [certificate](/learn/uci/certificate), a data structure that complies with the UCI, i.e., is correctly constructed, is signed with a valid signature, and contains a valid state transition.
 
 ## Transmission Control Engine
 

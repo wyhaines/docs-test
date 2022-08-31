@@ -10,6 +10,6 @@ Once built with a compatible DevKit, a subnet registers itself with the [Topos S
 
 ## Interactions with other subnets
 
-Once registered with the Topos Subnet and known to the rest of the Topos ecosystem, a subnet can start interacting with other subnets, i.e., exchanging [cross-subnet transactions](#cross-subnet-transactions), by submitting [certificates](/learn/uci/overview#certificate) that comply with the specifications defined in the UCI.
+Once registered with the Topos Subnet and known to the rest of the Topos ecosystem, a subnet can start interacting with other subnets, i.e., exchanging [cross-subnet messages](/learn/subnets/cross-subnet-messages), by submitting [certificates](/learn/uci/certificate) that comply with the specifications defined in the UCI.
 
 To do so, subnet participants establish connections with [TCE](/learn/tce/overview) nodes, to whom they will submit outgoing certificates and listen for new incoming ones.

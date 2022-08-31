@@ -6,16 +6,16 @@ sidebar_position: 2
 
 ## What is a certificate?
 
-Cross-subnet communication in Topos lies in the submission of **certificates**—data structures that certify subnet state transitions. Any subnet participants can send an outgoing message towards another subnet.
+Cross-subnet communication in Topos lies in the submission of **certificates**—data structures that certify subnet state transitions.
 
 It is the role of every subnet to:
 
-- identify key participants;
+- identify key participants for certificate creation/propagation;
 - batch transactions in a certificate;
 - include a cryptographic proof of the [validity of the state transition](/learn/uci/state-transitions-validity);
-- [sign](/learn/uci/authentication) the certificate.
+- [authenticate](/learn/uci/authentication) the certificate (more precisely the [certificate message](/learn/uci/certificate-lifecycle#propagation-to-the-tce)).
 
-Once broadcast and delivered by the TCE, the certificate can be verified and the cross-subnet transaction included in the receiving subnet.
+Once broadcast and delivered throughout the TCE, the certificate can be verified and the cross-subnet message included in the receiving subnet.
 
 ## Composition
 

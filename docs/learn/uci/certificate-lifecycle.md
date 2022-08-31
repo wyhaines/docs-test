@@ -6,34 +6,30 @@ sidebar_position: 5
 
 ## Production
 
-Topos does not enforce any rule as to how often and when subnets should submit their certificates, and as such leaves the definition of the triggers responsible for certificate production at the discretion of subnet developers.
+Topos does not enforce any rules as to how often and when subnets should submit their certificates, and as such leaves the definition of the triggers responsible for certificate production at the discretion of subnet developers.
 
-Producing a certificate comes down to creating a data structure that complies with the UCI, i.e., authenticates the submitting subnet and proves the validity of its included state transitions.
+Producing a certificate comes down to creating and submitting a data structure that complies with the UCI, i.e., is authenticated and proves the validity of the included state transition.
 
-## Propagation
+## Propagation to the TCE
 
-When a subnet wants to submit a new certificate, it needs to propagate it to the rest of the Topos ecosystem. Certificate delivery is handled by the [TCE](/learn/tce/overview) network built on top of the [Weak Causal Probabilistic Reliable Broadcast](/learn/tce/wcprb) primitive.
+When a subnet wants to submit a new certificate, it needs to propagate it to the rest of the Topos ecosystem. To that end, certain subnet participants, e.g., subnet validators, are also participating in the [TCE](/learn/tce/overview) network, allowing them to collectively create, authenticate, and broadcast <b>certificate messages</b> that encapsulate certificates and their dependencies.
 
-Subnets are all connected to _random_ sets of TCE nodes with which they interact in order to propagate certificates, and therefore cross-subnet transactions.
+The role of these specific subnet participants is twofold:
 
-:::info
-It is important to note that subnets can choose which TCE nodes to connect to without impacting the security of the Topos protocol.
-:::
+- They create, authenticate, and broadcast certificate messages to the TCE network.
+- They verify certificate messages received from other subnets and execute cross-subnet messages that are addressed to their subnet.
 
-Interactions between subnet nodes and TCE nodes are twofold:
+## Validation and Broadcast
 
-- Subnets submit certificates to TCE nodes.
-- Subnets participants verifying certificates receiving from other subnets via the TCE execute any incoming cross-subnet transactions.
+Certificates are validated both intrinsically and extrinsically:
 
-Once received by the TCE nodes connected to the submitting subnet, the certificate is reliably propagated to the rest of the TCE network, and delivered by all TCE nodes.
+- They are **intrinsically** valid if they are well formed, if their included zkSTARK proof is valid, and if their included cross-subnet messages are verified to be part of the proven state transition.
+- They are **extrinsically** valid if their dependencies are valid, i.e., are part of the history of their respectiving subnets (read more [here](/learn/tce/wcprb)).
 
-## Validation
+This validation is performed by a TCE node before it broadcasts the certificate message, and by all TCE nodes before they deliver it.
 
-Upon delivering the certificate, all the TCE nodes execute the **certificate validation function**, ensuring that:
-
-1. The certificate is well-formed;
-2. The zkSTARK proof is valid.
+The broadcast is performed via the [Weak Causally Probabilistic Reliable Broadcast primitive](/learn/tce/wcprb) implemented by all TCE nodes.
 
 ## Inclusion
 
-Once validated, the certificate is consumed by the receiving subnets, i.e., they apply the corresponding cross-subnet transactions to their state. These transactions will eventually be reflected in their next certificates, as part of the state transitions validated by zkSTARK proofs.
+Once delivered, the certificate is consumed by the receiving subnets, i.e., they apply the included cross-subnet messages to their state. These transactions will eventually be reflected in their next certificate, as part of their new state transition.
