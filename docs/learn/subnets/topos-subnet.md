@@ -4,11 +4,11 @@ sidebar_position: 3
 
 # Topos Subnet
 
-The **Topos Subnet** is a special subnet that holds a core role in the Topos ecosystem: It handles the registration of the ecosystem actors (subnets and TCE participants), manages TOPOS (the ecosystem's native cryptocurrency) and allows for governance of the protocol through on-chain voting, such that TOPOS token holders will have the ability to participate in future protocol improvements.
+The **Topos Subnet** is a special subnet that holds a core role in the Topos ecosystem: It handles the registration of the ecosystem actors (subnets and TCE participants), manages TOPOS (the ecosystem's native asset) and allows for governance of the protocol through on-chain voting, such that TOPOS token holders will have the ability to participate in future protocol improvements.
 
 ## Subnet Registration
 
-Subnets ready to participate in the Topos ecosystem first need to **register** with the Topos subnet. The registration process consists in submitting a **registration transaction** that pays a fee denominated in TOPOS and contains the subnet's **signature public key** to authenticate its certificates and guarantee its integrity.
+Subnets ready to participate in the Topos ecosystem first need to **register** with the Topos subnet. The registration process consists in submitting a **registration transaction** that pays a fee denominated in TOPOS and contains the subnet's **signature public key** to authenticate its certificates and guarantee their integrity.
 
 ## TCE Participants Registration
 

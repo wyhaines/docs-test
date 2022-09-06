@@ -44,7 +44,7 @@ Topos allows for interoperability between subnets via the following transmission
     <img src="/img/transmission-flow.jpg" width="90%" style={{margin: '2rem 0'}}/>
 </div>
 
-Following the rules of the [UCI](/learn/uci/overview), a cross-subnet message that has been included on the canonical chain of the sending subnet is grouped with an arbitrary amount of transactions to form a new state transition to be certifified. The certificate contains a proof of the validity of the state transition and the certificate message is authenticated. Once delivered throughout the [TCE](/learn/tce/overview) network, via the [reliable broadcast primitive](/learn/tce/wcprb), the cross-subnet message is collected by the subnet it is addressed to.
+Following the rules of the [UCI](/learn/uci/overview), a cross-subnet message that has been included on the canonical chain of the sending subnet is grouped with an arbitrary number of transactions to form a new state transition to be certified. The certificate contains a proof of the validity of the state transition and the certificate message is authenticated. Once delivered throughout the [TCE](/learn/tce/overview) network, via the [reliable broadcast primitive](/learn/tce/wcprb), the cross-subnet message is collected by the subnet it is addressed to.
 
 :::tip Validity and Authentication
 

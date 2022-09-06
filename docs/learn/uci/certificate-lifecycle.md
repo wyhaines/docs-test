@@ -21,15 +21,15 @@ The role of these specific subnet participants is twofold:
 
 ## Validation and Broadcast
 
-Certificates are validated both intrinsically and extrinsically:
+Certificates are verified to be both intrinsically and extrinsically valid:
 
 - They are **intrinsically** valid if they are well formed, if their included zkSTARK proof is valid, and if their included cross-subnet messages are verified to be part of the proven state transition.
-- They are **extrinsically** valid if their dependencies are valid, i.e., are part of the history of their respectiving subnets (read more [here](/learn/tce/wcprb)).
+- They are **extrinsically** valid if their dependencies are valid, i.e., are part of the history of their respective subnets (read more [here](/learn/tce/wcprb)).
 
-This validation is performed by a TCE node before it broadcasts the certificate message, and by all TCE nodes before they deliver it.
+This validation is performed by an honest TCE node before it broadcasts the certificate message, and by all honest TCE nodes before they deliver it.
 
 The broadcast is performed via the [Weak Causally Probabilistic Reliable Broadcast primitive](/learn/tce/wcprb) implemented by all TCE nodes.
 
 ## Inclusion
 
-Once delivered, the certificate is consumed by the receiving subnets, i.e., they apply the included cross-subnet messages to their state. These transactions will eventually be reflected in their next certificate, as part of their new state transition.
+Once delivered, the certificate is consumed by the receiving subnets, i.e., they execute the included cross-subnet messages. These transactions will eventually be reflected in their next certificate, as part of their new state transition.

@@ -15,7 +15,7 @@ It is the role of every subnet to:
 - include a cryptographic proof of the [validity of the state transition](/learn/uci/state-transitions-validity);
 - [authenticate](/learn/uci/authentication) the certificate (more precisely the [certificate message](/learn/uci/certificate-lifecycle#propagation-to-the-tce)).
 
-Once broadcast and delivered throughout the TCE, the certificate can be verified and the cross-subnet message included in the receiving subnet.
+Once broadcast and delivered throughout the TCE, the certificate can be verified and the cross-subnet message executed in the receiving subnet.
 
 ## Composition
 
