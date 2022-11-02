@@ -33,7 +33,7 @@ Multi-chain projects based on sharding assign validators to shards in order to v
 
 ### Interoperability
 
-**Interoperability** lies in the capacity of multiple systems to interface with each other. A truly **open**, i.e., permissionless, interoperability protocol is key to the adoption of blockchain technology: research<sup>[1](#ref-1)</sup> has shown that the vast majority of organizations switching to blockchain favor creating their own network to remain in control of their data. Interoperability paves the way for a universal bridge between any type of public and private blockchains.
+**Interoperability** lies in the capacity of multiple systems to interface with each other. A truly **open**, i.e., permissionless, interoperability protocol is key to the adoption of blockchain technology: research<sup>[1](#ref-1)</sup> has shown that the vast majority of organizations switching to blockchain favor creating their own network to remain in control of their data. Interoperability paves the way for a universal interfacing between any type of public and private blockchains.
 
 :::tip Composability
 
@@ -47,7 +47,7 @@ Historically, **privacy** has remained a rarity in the blockchain scene, transac
 
 ---
 
-**As a permissionless, unlimitedly scalable, and privacy-enhancing interoperability protocol, Topos aims at giving back the control and freedom to service users and leading the way for a true open and decentralized Internet.**
+**As a permissionless, unlimitedly scalable, and privacy-preserving multi-chain protocol, Topos aims at giving back the control and freedom to service users and leading the way for a truly open, trustless, and decentralized internet.**
 
 ## How does Topos work?
 

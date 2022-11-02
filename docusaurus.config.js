@@ -5,7 +5,7 @@ const katex = require('rehype-katex')
 const gtm = require('docusaurus-gtm-plugin')
 
 const metaDescription =
-  'Documentation of Topos, a consensusless, trust-free, privacy-enhancing interoperability protocol to bridge blockchains'
+  'Documentation of Topos, a consensusless, trustless, and proof-based ecosystem of interoperable blockchains built for a decentralized internet'
 const metaImage = 'https://docs.toposware.com/img/banner-topos-seo.png'
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
@@ -40,9 +40,7 @@ module.exports = {
       }),
     ],
   ],
-  plugins: [
-    [gtm, {id: 'GTM-MMSJVKH'}]
-  ],
+  plugins: [[gtm, { id: 'GTM-MMSJVKH' }]],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

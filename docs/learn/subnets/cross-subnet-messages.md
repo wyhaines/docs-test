@@ -6,7 +6,25 @@ sidebar_position: 4
 
 ## Definition
 
-A **cross-subnet message** represents a request from a user on a subnet to execute a transaction in a remote subnet. The requesting user calls a dedicated protocol-level smart contract, called the **Topos Core contract**, on the sending subnet. This call, once received by the remote subnet, is interpreted as another function to call (e.g., token mint).
+A **cross-subnet message** represents a request from a user on a subnet to execute a transaction in a remote subnet. In practice, it consists in a transaction on the sending subnet that is part of a state transition whose validity is ensured by the [UCI](/learn/uci/overview), which is settled on the [TCE](/learn/tce/overview), and delivered to the receiving subnet.
+
+Topos allows for interoperability between subnets via the following transmission flow of cross-subnet messages:
+
+<div style={{textAlign: 'center'}}>
+    <img src="/img/transmission-flow.jpg" width="90%" style={{margin: '2rem 0'}}/>
+</div>
+
+:::tip Validity and Authentication
+
+Thanks to the validity and authentication properties guaranteed by the UCI and the consistent delivery ensured by the TCE, the receiving subnet can trustlessly and securely interpret the cross-subnet message and execute the request transaction locally.
+
+:::
+
+While subnets are free to implement any specific cross-subnet messaging protocols built on top the [UCI](/learn/uci/overview) and the [TCE](/learn/tce/overview), we propose the **Topos Cross-Subnet Messaging Protocol**.
+
+## Topos Cross-Subnet Messaging Protocol
+
+The requesting user calls a dedicated protocol-level smart contract, the **Topos Core contract**, on the sending subnet. Once proven to be part of a verified state transition of the sending subnet, the call is executed on the receiving subnet.
 
 The Topos Core contract function to call on the sending subnet depends on the type of message requested:
 
@@ -33,21 +51,5 @@ callArbitraryContract(
 ```
 
 :::info
-Cross-subnet messages are **under development**. More information will be available soon!
-:::
-
-## Transmission Flow
-
-Topos allows for interoperability between subnets via the following transmission flow of cross-subnet messages:
-
-<div style={{textAlign: 'center'}}>
-    <img src="/img/transmission-flow.jpg" width="90%" style={{margin: '2rem 0'}}/>
-</div>
-
-Following the rules of the [UCI](/learn/uci/overview), a cross-subnet message that has been included on the canonical chain of the sending subnet is grouped with an arbitrary number of transactions to form a new state transition to be certified. The certificate contains a proof of the validity of the state transition and the certificate message is authenticated. Once delivered throughout the [TCE](/learn/tce/overview) network, via the [reliable broadcast primitive](/learn/tce/wcprb), the cross-subnet message is collected by the subnet it is addressed to.
-
-:::tip Validity and Authentication
-
-Thanks to the validity and authentication properties guaranteed by the UCI and the consistent delivery ensured by the TCE, the receiving subnet can trustlessly and securely interpret the cross-subnet message and execute the request transaction locally.
-
+The Topos Cross-Subnet Messaging Protocol is **under active development**. More information will be available soon!
 :::
