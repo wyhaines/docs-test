@@ -140,7 +140,7 @@ module.exports = {
           },
           {
             label: ' ',
-            to: 'https://github.com/toposware',
+            to: 'https://github.com/topos-network',
             position: 'right',
             className: 'social github',
           },
