@@ -29,10 +29,12 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          sidebarCollapsible: false,
-          // Please change this to your repo.
           remarkPlugins: [math],
           rehypePlugins: [katex],
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/toposware/docs/edit/master/${versionDocsDirPath}/${docPath}`,
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -103,11 +105,6 @@ module.exports = {
           content: metaImage,
         },
       ],
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
-      },
       navbar: {
         title: 'Topos Docs',
         logo: {
@@ -121,25 +118,21 @@ module.exports = {
             position: 'right',
           },
           {
-            label: ' ',
             to: 'https://twitter.com/Topos_Network',
             position: 'right',
             className: 'social twitter',
           },
           {
-            label: ' ',
             to: 'https://www.linkedin.com/company/toposware',
             position: 'right',
             className: 'social linkedin',
           },
           {
-            label: ' ',
             to: 'https://medium.com/topos-network',
             position: 'right',
             className: 'social medium',
           },
           {
-            label: ' ',
             to: 'https://github.com/topos-network',
             position: 'right',
             className: 'social github',
@@ -149,6 +142,15 @@ module.exports = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'S36OISFKTX',
+
+        // Public API key: it is safe to commit it
+        apiKey: '0fa2fba08c391e0b749497138ce5d965',
+
+        indexName: 'toposware',
       },
     }),
   stylesheets: [

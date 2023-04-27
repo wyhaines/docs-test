@@ -4,31 +4,31 @@
 * work well for content-centric websites.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Roboto:wght@400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Roboto:wght@400;500;700&display=swap'); */
 
 /* You can override the default Infima variables here. */
 :root {
-  --doc-sidebar-width: max(300px, -455px + 50vw) !important;
-  --ifm-color-primary: #009f9e;
+  /* --doc-sidebar-width: max(300px, -455px + 50vw) !important; */
+  --ifm-color-primary: #27c794;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%;
-  --ifm-font-color-base: rgb(59, 69, 78);
-  --ifm-menu-color-background-active: #fff;
-  --ifm-navbar-height: 80px;
-  --ifm-navbar-padding-horizontal: 2rem;
-  --ifm-navbar-link-color: rgb(59, 69, 78);
-  --ifm-toc-border-color: rgb(211, 220, 228);
-  --ifm-navbar-shadow: rgba(0, 0, 0, 0.05) 0px 4px 10px;
+  /* --ifm-code-font-size: 95%; */
+  /* --ifm-font-color-base: rgb(59, 69, 78); */
+  /* --ifm-menu-color-background-active: #fff; */
+  /* --ifm-navbar-height: 80px; */
+  /* --ifm-navbar-padding-horizontal: 2rem; */
+  /* --ifm-navbar-link-color: rgb(59, 69, 78); */
+  /* --ifm-toc-border-color: rgb(211, 220, 228); */
+  /* --ifm-navbar-shadow: rgba(0, 0, 0, 0.05) 0px 4px 10px; */
   /* --ifm-footer-background-color: #29293d; */
-  --ifm-footer-background-color: red !important;
+  /* --ifm-footer-background-color: red !important; */
 }
 
-html,
+/* html,
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
@@ -46,9 +46,14 @@ h4,
 h5,
 h6 {
   font-family: 'Barlow', sans-serif;
-}
+} */
 
-nav {
+/* .menu {
+  margin-left: auto;
+  width: 300px;
+} */
+
+/* nav {
   padding-right: 0 !important;
 }
 
@@ -152,28 +157,58 @@ main > .container > .row > div:last-of-type:not(:first-of-type) {
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
-}
+} */
 
 .social {
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 2rem;
-  margin-left: 0.6rem;
-  width: 2rem;
+  padding: 0 0.4rem;
+  transition: opacity 0.4s ease;
 }
 
-.github {
+.social:last-of-type {
+  margin-right: 0.4rem;
+}
+
+.social:hover {
+  opacity: 0.6;
+}
+
+.social:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.github:before {
   background-image: url(/img/social-github.svg);
 }
 
-.linkedin {
+html[data-theme='dark'] .github:before {
+  background-image: url(/img/social-github-dark.svg);
+}
+
+.linkedin:before {
   background-image: url(/img/social-linkedin.svg);
 }
 
-.medium {
+html[data-theme='dark'] .linkedin:before {
+  background-image: url(/img/social-linkedin-dark.svg);
+}
+
+.medium:before {
   background-image: url(/img/social-medium.svg);
 }
 
-.twitter {
+html[data-theme='dark'] .medium:before {
+  background-image: url(/img/social-medium-dark.svg);
+}
+
+.twitter:before {
   background-image: url(/img/social-twitter.svg);
+}
+
+html[data-theme='dark'] .twitter:before {
+  background-image: url(/img/social-twitter-dark.svg);
 }
